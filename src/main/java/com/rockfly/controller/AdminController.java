@@ -19,16 +19,10 @@ public class AdminController {
 	private AccountService accountService;
 
 	@GetMapping("/dashboard")
-	public String getDashboard() {
-		return "Admin/AdminDashboard";
+	public String getpage() {
+		return "pages/dashboard";
 	}
 	
-	@GetMapping("/addEmployee")
-	public String register(Model model) {
-		Account account=new Account();
-		model.addAttribute("account", account);
-		return "Admin/AddEmployee";
-	}
 	
 	@PostMapping("/addEmployee")
 	public String register_accountString(@ModelAttribute Account account) {
@@ -36,9 +30,10 @@ public class AdminController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/test")
-	public String gettest() {
-		return "Admin/test";
+	@GetMapping("/addEmployee")
+	public String getAddEmployeePage() {
+		return "pages/AddEmployee";
+
 	}
 	
 }
