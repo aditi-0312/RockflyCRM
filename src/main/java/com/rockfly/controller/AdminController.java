@@ -13,4 +13,14 @@ public class AdminController {
 		return "Admin/AdminDashboard";
 	}
 	
+	@GetMapping("/addEmployee")
+	public String getAddEmployeePage() {
+		return "Admin/AddEmployee";
+	}
+	
+	@GetMapping("/test")
+	public String gettest() {
+		return "Admin/test";
+	}
+	
 }
