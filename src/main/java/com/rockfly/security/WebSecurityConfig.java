@@ -1,6 +1,5 @@
 package com.rockfly.security;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 // import org.springframework.security.config.Customizer;
@@ -22,67 +21,49 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 public class WebSecurityConfig {
 
-private static final String[] WHITELIST= {
+	private static final String[] WHITELIST = {
 
-"/",
+			"/",
 
-"/login",
+			"/login",
 
-};
-@Bean
-public static PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-}
+			"/css/**", "/images/**", "/js/**", "/vendors/**","/style.css","/index.js","/hero-img.png"
 
-@SuppressWarnings({ "removal" })
-@Bean
+	};
 
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	@Bean
+	public static PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
-        // http.cors(AbstractHttpConfigurer::disable);
-	    // http.csrf(AbstractHttpConfigurer::disable);
+	@SuppressWarnings({ "removal" })
+	@Bean
 
-    http
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-            .authorizeHttpRequests((authz) -> authz
+		http
 
-                            // .requestMatchers("/api/admin/**").hasRole("ADMIN")
+				.authorizeHttpRequests((authz) -> authz
 
-                            .requestMatchers(WHITELIST)
+						.requestMatchers(WHITELIST)
 
-                            .permitAll()
-                            .requestMatchers("/profile/**").authenticated()
-                            .requestMatchers("/admin/**").hasRole("ADMIN")
-                            .requestMatchers("/editor/**").hasAnyRole("ADMIN","EDITOR")
-                            .anyRequest()
-                            .authenticated()
-                            
+						.permitAll()
 
-            ).formLogin(form -> {
-                try {
-                    form.loginPage("/login").loginProcessingUrl("/login")
-                            .usernameParameter("email")
-                            .passwordParameter("password")
-                            .defaultSuccessUrl("/", true)
-                            .failureUrl("/login?error")
-                            .permitAll().and().logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                            .logoutSuccessUrl("/").deleteCookies("JSESSIONID")
-                            .invalidateHttpSession(true)).rememberMe(me -> me.rememberMeParameter("remember-me"))
-                            .httpBasic(withDefaults())
-                        ;
-                } catch (Exception e) {
-                        e.printStackTrace();
-                }
-            });
-            // .httpBasic(Customizer.withDefaults())
-            // .csrf(csrf -> csrf.ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/db-console/**")))
-            // .headers(headers -> headers.frameOptions().disable());
-        
-        return http.build();
+				)
+				.formLogin(form -> {
+					try {
+						form.loginPage("/login").loginProcessingUrl("/login").usernameParameter("email")
+								.passwordParameter("password").defaultSuccessUrl("/", true).failureUrl("/login?error")
+								.permitAll().and()
+								.logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+										.logoutSuccessUrl("/").deleteCookies("JSESSIONID").invalidateHttpSession(true))
+								.rememberMe(me -> me.rememberMeParameter("remember-me")).httpBasic(withDefaults());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				});
+		return http.build();
 
-    }
-
-
+	}
 
 }
-

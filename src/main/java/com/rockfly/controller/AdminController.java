@@ -31,7 +31,9 @@ public class AdminController {
 	}
 	
 	@GetMapping("/addEmployee")
-	public String getAddEmployeePage() {
+	public String getAddEmployeePage(Model model) {
+		Account account=new Account();
+		model.addAttribute("account", account);
 		return "pages/AddEmployee";
 
 	}
