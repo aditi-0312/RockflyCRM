@@ -23,7 +23,7 @@ public class WebSecurityConfig {
 
 	private static final String[] WHITELIST = {
 
-			"/**",
+			"/",
 
 			"/login",
 
@@ -47,16 +47,18 @@ public class WebSecurityConfig {
 
 						.requestMatchers(WHITELIST)
 
-						.permitAll()
+						.permitAll().requestMatchers("/admin/**").hasRole("ADMIN")
+                        .anyRequest()
+                        .authenticated()
 
 				)
 				.formLogin(form -> {
 					try {
 						form.loginPage("/login").loginProcessingUrl("/login").usernameParameter("email")
-								.passwordParameter("password").defaultSuccessUrl("/", true).failureUrl("/login?error")
+								.passwordParameter("password").defaultSuccessUrl("/dashboard", true).failureUrl("/login?error")
 								.permitAll().and()
 								.logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-										.logoutSuccessUrl("/").deleteCookies("JSESSIONID").invalidateHttpSession(true))
+										.logoutSuccessUrl("/login").deleteCookies("JSESSIONID").invalidateHttpSession(true))
 								.rememberMe(me -> me.rememberMeParameter("remember-me")).httpBasic(withDefaults());
 					} catch (Exception e) {
 						e.printStackTrace();

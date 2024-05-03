@@ -36,6 +36,7 @@ public class SeedData implements CommandLineRunner{
 		Account account1 = new Account();
 		Account account2 = new Account();
 		Account account3=new Account();
+		Account account4=new Account();
 		
 		account1.setEmail("admin@rockfly.com");
 		account1.setPassword("123");
@@ -48,18 +49,27 @@ public class SeedData implements CommandLineRunner{
 		account2.setRole(Roles.SALES.getRole());
 		
 		Set<Authority> authorities = new HashSet<>();
-        authorityService.findById(Privileges.RESET_ANY_USER_PASSWORD.getId()).ifPresent(authorities::add);
-        authorityService.findById(Privileges.ACCESS_ADMIN_PANEL.getId()).ifPresent(authorities::add);
+        authorityService.findById(Privileges.ACCESS_SALES_TABLE.getId()).ifPresent(authorities::add);
         account2.setAuthorities(authorities);
 		
 		account3.setEmail("biller@rockfly.com");
 		account3.setPassword("123");
 		account3.setName("biller");
 		
+		account4.setEmail("dispatcher@rockfly.com");
+		account4.setPassword("123");
+		account4.setName("dispatcher");
+		account4.setRole(Roles.DISPATCHER.getRole());
+		Set<Authority> authorities2 = new HashSet<>();
+        authorityService.findById(Privileges.ACCESS_DISPATCHER_TABLE.getId()).ifPresent(authorities2::add);
+        authorityService.findById(Privileges.ACCESS_MAIN_INVENTORY.getId()).ifPresent(authorities2::add);
+        authorityService.findById(Privileges.ACCESS_SALES_TABLE.getId()).ifPresent(authorities2::add);
+        account4.setAuthorities(authorities2);
+		
 		accountService.save(account1);
 		accountService.save(account2);
 		accountService.save(account3);
-		
+		accountService.save(account4);
 	}
 
 }

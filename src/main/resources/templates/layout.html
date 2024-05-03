@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" dir="" xmlns:th="http://www.thymeleaf.org"
+<html lang="en" dir="" xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	th:fragment="layout(content)">
 
 <head>
@@ -107,11 +108,11 @@
 								</li>
 							</ul>
 						</div></li>
-
+					<span sec:authorize="hasRole('ROLE_ADMIN')">
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/admin/addEmployee}"> <i class="menu-icon mdi mdi-account-multiple"></i> <span
 							class="menu-title">Staff Appointment</span>
-					</a></li>
+					</a></li></span>
 
 					<li class="nav-item"><a class="nav-link" href="#"> <i
 							class="menu-icon mdi mdi-chart-line"></i> <span
