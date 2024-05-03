@@ -17,12 +17,6 @@ public class AdminController {
 	
 	@Autowired
 	private AccountService accountService;
-
-	@GetMapping("/dashboard")
-	public String getpage() {
-		return "pages/dashboard";
-	}
-	
 	
 	@PostMapping("/addEmployee")
 	public String register_accountString(@ModelAttribute Account account) {
