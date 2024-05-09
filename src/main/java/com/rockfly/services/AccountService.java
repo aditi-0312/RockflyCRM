@@ -31,6 +31,12 @@ public class AccountService implements UserDetailsService {
 	public Account save(Account account) {
 
 		account.setPassword(passwordEncoder.encode(account.getPassword()));
+		
+//		account.setEmail(account.getEmail());
+//		account.setName("admin");
+//		account.setRole(Roles.ADMIN.getRole());
+		
+		
 		if (account.getRole() == null) {
 			account.setRole(Roles.BILLER.getRole());
 		}

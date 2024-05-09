@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rockfly.repositories.SalesRepository;
+import com.rockfly.repositories.StockRepository;
 
 @Service
-public class SalesService {
+public class StockService {
 	
 	@Autowired
-	private SalesRepository salesRepository;
+	private StockRepository stockRepository;
 
 }

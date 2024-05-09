@@ -3,12 +3,12 @@ package com.rockfly.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rockfly.repositories.SalesRepository;
+import com.rockfly.repositories.CategoryRepository;
 
 @Service
-public class SalesService {
+public class CategoryService {
+
 	
 	@Autowired
-	private SalesRepository salesRepository;
-
+	private CategoryRepository categoryRepository;
 }
