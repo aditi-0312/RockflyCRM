@@ -32,4 +32,9 @@ public class AdminController {
 
 	}
 	
+	@GetMapping("/addItem")
+	public String getAddItemPage() {
+		return "pages/AddItem";
+	}
+	
 }
