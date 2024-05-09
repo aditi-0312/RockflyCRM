@@ -7,14 +7,27 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Star Admin</title>
+<title>Rockfly</title>
 <link rel="stylesheet"
 	th:href="@{/vendors/iconfonts/mdi/css/materialdesignicons.min.css}">
 <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.base.css}">
 <link rel="stylesheet"
 	th:href="@{/vendors/css/vendor.bundle.addons.css}">
 <link rel="stylesheet" th:href="@{/css/style.css}"> 
-<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+<link rel="shortcut icon" th:href="@{/images/rockfly.png}" />
+
+
+<style>
+        /* Custom CSS for the underline */
+        .blue-underline {
+            border-bottom: 2px solid blue; /* Blue underline */
+            font-weight: bold; /* Make the text bold */
+        }
+		
+		.text-colour{
+			color: blue;
+		}
+    </style>
 </head>
 
 <body>
@@ -97,7 +110,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 					</a>
 						<div class="collapse" id="ui-basic">
 							<ul class="nav flex-column sub-menu">
-								<li class="nav-item"><a class="nav-link" href="#">Add Item</a>
+								<li class="nav-item"><a class="nav-link" href="#" th:href = "@{/admin/addItem}">Add Item</a>
 								</li>
 								<li class="nav-item"><a class="nav-link" href="#">View/Edit Stock</a>
 								</li>

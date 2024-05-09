@@ -8,25 +8,124 @@
 <body>
 
 <section>
+	<div class="container shadow-sm border rounded mt-4 mb-4">
+	        <h1 class="mt-4 mb-4">Add Item</h1>
 
-<div class="modal fade">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+	        <!-- Add Item Form -->
+	        <form>
+	            <div class="form-row">
+	                <!-- Item Name -->
+	                <div class="form-group col-md-6">
+	                    <label for="itemName">Item Name</label>
+	                    <input type="text" class="form-control" id="itemName" placeholder="Enter item name" required>
+	                </div>
 
+	                <!-- Item Code -->
+	                <div class="form-group col-md-6">
+	                    <label for="itemCode">Item Code</label>
+	                    <input type="text" class="form-control" id="itemCode" placeholder="Enter item code">
+	                </div>
+	            </div>
+
+				
+				<!-- Select Category -->
+	            <div class="form-row">
+	                <!-- Category Name -->
+					<div class="form-group col-md-6">
+						<label for="selectSize">Select Category</label>
+						<select class="form-control" id="selectSize">
+							<option selected disabled>Select Category...</option>
+							<option>T-shirt</option>
+							<option>Shirt</option>
+							<option>Jeans</option>
+						</select>
+					</div>
+					
+					<!-- Item HSN / SAC -->
+					<div class="form-group col-md-6">
+						<label for="itemCode">Item  HSN / SAC</label>
+						<input type="text" class="form-control" id="itemCode" placeholder="Item HSN / SAC">
+					</div>
+
+	                
+	            </div>
+
+	            <div class="form-row">
+					
+					<!-- Select Size -->
+					<div class="form-group col-md-6">
+						<label for="selectSize">Select Size</label>
+						<select class="form-control" id="selectSize">
+							<option selected disabled>Select size...</option>
+							<option>Small</option>
+							<option>Medium</option>
+							<option>Large</option>
+						</select>
+					</div>
+					
+					
+	                <!-- Select Unit -->
+	                <div class="form-group col-md-6">
+	                    <label for="selectUnit">Select Unit</label>
+	                    <select class="form-control" id="selectUnit">
+	                        <option selected disabled>Select unit...</option>
+	                        <option>Piece(s)</option>
+	                        <option>Kilogram(s)</option>
+	                        <option>Gram(s)</option>
+	                    </select>
+	                </div>
+
+	            </div>
+
+				<h3 class="blue-underline mt-4 mb-4 col-md-2 text-colour">PRICING</h3>
+				
+	            <div class="form-row">
+					
+					<!-- Pricing Section -->
+					<div class="form-group col-md-6">
+						<label for="itemMRP">MRP (Maximum Retail Price)</label>
+						<input type="text" class="form-control" id="itemMRP" placeholder="Enter MRP"  required>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label for="itemSalePrice">Sale Price</label>
+						<input type="text" class="form-control" id="itemSalePrice" placeholder="Enter sale price"  required>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label for="itemWholesalePrice">Wholesale Price</label>
+						<input type="text" class="form-control" id="itemWholesalePrice" placeholder="Enter wholesale price" 
+							required>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label for="itemPurchasePrice">Purchase Price</label>
+						<input type="text" class="form-control" id="itemPurchasePrice" placeholder="Enter wholesale price"
+							required>
+					</div>					       
+	            </div>
+				
+				<h3 class="blue-underline mt-4 mb-4 col-md-2 text-colour">STOCK</h3>
+				
+				<div class="form-row">
+								
+								<!-- STOCK Section -->
+								<div class="form-group col-md-6">
+									<label for="itemOpening Stock">Opening Stock</label>
+									<input type="text" class="form-control" id="itemOpening Stock" placeholder="Enter Opening Stock" required>
+								</div>
+								
+								<div class="form-group col-md-6">
+									<label for="itemMInStockToMaintain">Min Stock To Maintain</label>
+									<input type="text" class="form-control" id="itemMInStockToMaintain" placeholder="Enter Min Stock To Maintain" required>
+								</div>       
+				            </div>
+							
+				<div class=" text-center border-top mt-4">
+					<button type="submit" class="btn btn-primary mb-4 mt-4 col-4">Add Item</button>
+				</div>    
+	        </form>
+	    </div>
 </section>
 
 </body>

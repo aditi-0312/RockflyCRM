@@ -9,42 +9,143 @@
 
 
 <section class="d-flex justify-content-center">
-
+<!--
 <div class="col-md-4 col-md-offset-4 mt-5 mb-5">
-						
-						<h1>Registration</h1>
-						<div id="inner-wrapper" class="login">
-						
-							<article>
-								<form>
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-user"> </i></span>
-											<input type="text" class="form-control" placeholder="Name">
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
-											<input type="email" class="form-control" placeholder="Email Address">
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-key"> </i></span>
-											<input type="password" class="form-control" placeholder="Password">
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-key"> </i></span>
-											<input type="password" class="form-control" placeholder="Confirm Password">
-										</div>
-									</div>
-									  <button type="submit" class="btn btn-success btn-block">Submit</button>
-								</form>
-							</article>
-						</div></div>
+
+	<h1>Registration</h1>
+	<div id="inner-wrapper" class="login">
+
+		<article>
+			<form>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"> </i></span>
+						<input type="text" class="form-control" placeholder="Name">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
+						<input type="email" class="form-control" placeholder="Email Address">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-key"> </i></span>
+						<input type="password" class="form-control" placeholder="Password">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-key"> </i></span>
+						<input type="password" class="form-control" placeholder="Confirm Password">
+					</div>
+				</div>
+				<button type="submit" class="btn btn-success btn-block">Submit</button>
+			</form>
+		</article>
+	</div>
+</div>
+-->
+
+
+
+
+
+
+
+<div class="container shadow-sm border rounded mt-4 mb-4">
+	        <h1 class="mt-4 mb-4">Employee Registration</h1>
+
+	        <!-- Add Employee Form -->
+	        <form>
+	            <div class="form-row">
+	                <!-- Employee Name -->
+	                <div class="form-group col-md-6">
+	                    <label for="employeeName">Employee Name</label>
+	                    <input type="text" class="form-control" id="employeeName" placeholder="Enter Employee name" required>
+	                </div>
+
+	                <!-- Phone Number -->
+	                <div class="form-group col-md-6">
+	                    <label for="phoneNumber">Phone Number</label>
+	                    <input type="text" class="form-control" id="phoneNumber" placeholder="phone Number">
+	                </div>
+	            </div>
+
+				
+	            <div class="form-row">
+					
+					<!-- Aadhar -->
+					<div class="form-group col-md-6">
+						<label for="aadhar">Aadhar</label>
+						<input type="text" class="form-control" id="aadhar" placeholder="Enter aadhar number">
+					</div>
+
+						                
+					<!-- User Name / Email -->
+					<div class="form-group col-md-6">
+						<label for="email">Email</label>
+						<input type="email" class="form-control" id="email" placeholder="@example.com">
+					</div>
+					
+	            </div>
+
+	            <div class="form-row">
+					
+					<!-- Password -->
+					<div class="form-group col-md-6">
+						<label for="password">Password</label>
+						<input type="text" class="form-control" id="password" placeholder="Enter Password">
+					</div>
+					
+					
+	                <!-- Select Role -->
+	                <div class="form-group col-md-6">
+	                    <label for="selectRole">Role</label>
+	                    <select class="form-control" id="selectRole">
+	                        <option selected disabled>Select Role...</option>
+	                        <option>Admin</option>
+	                        <option>Saller</option>
+	                        <option>Dispatcher</option>
+							<option>Biller</option>
+	                    </select>
+	                </div>
+
+	            </div>
+
+				<h3 class="blue-underline mt-4 mb-4 col-md-4 text-colour">Full Address</h3>
+				
+	            <div class="form-row">
+					
+					<!-- Address Section -->
+					<div class="form-group col-md-12">
+						<label for="Address">Address</label>
+						<input type="text" class="form-control" id="Address" placeholder="Enter Address"  required>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label for="City">City</label>
+						<input type="text" class="form-control" id="City" placeholder="Enter City"  required>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label for="pinCode">Pin Code</label>
+						<input type="text" class="form-control" id="pinCode" placeholder="Enter Pin Code" 
+							required>
+					</div>
+									       
+	            </div>
+				
+							
+				<div class=" text-center border-top mt-4">
+					<button type="submit" class="btn btn-success mb-4 mt-4 col-6">Add Employee</button>
+				</div>    
+	        </form>
+	    </div>
+		
+		
+		
 </section>
 
 </body>
