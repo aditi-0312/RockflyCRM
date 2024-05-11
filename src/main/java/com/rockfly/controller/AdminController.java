@@ -37,4 +37,14 @@ public class AdminController {
 		return "pages/AddItem";
 	}
 	
+	@GetMapping("/addCustomer")
+	public String getAddCustomerPage() {
+		return "pages/AddCustomer";
+	}
+	
+	@GetMapping("/customerList")
+	public String getCustomerList() {
+		return "pages/CustomerList";
+	}
+
 }
