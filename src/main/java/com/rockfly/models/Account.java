@@ -3,6 +3,9 @@ package com.rockfly.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.annotations.Check;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
