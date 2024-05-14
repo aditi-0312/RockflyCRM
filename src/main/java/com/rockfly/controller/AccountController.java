@@ -14,8 +14,7 @@ public class AccountController {
 	@GetMapping("/mainStock")
 	public String getMainStockList() {
 		return "pages/MainStockList";
-	}
-	
+	}	
 	
 	@GetMapping("/salesStock")
 	public String getSalesStockList() {
