@@ -29,6 +29,16 @@ public class Account {
 	private String password;
 	
 	private String name;
+	
+	private String phone;
+	
+	private String aadhaar;
+	
+	private String address;
+	
+	private String city;
+	
+	private String pincode;
 
 	private String role;
 	

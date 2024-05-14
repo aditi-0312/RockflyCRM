@@ -29,19 +29,39 @@ public class AccountService implements UserDetailsService {
 	private PasswordEncoder passwordEncoder;
 
 	public Account save(Account account) {
+		System.out.println(account.getPassword());
+		System.out.println(account.getName());
 
-		account.setPassword(passwordEncoder.encode(account.getPassword()));
 		
-//		account.setEmail(account.getEmail());
-//		account.setName("admin");
-//		account.setRole(Roles.ADMIN.getRole());
+		String encodedPassword=passwordEncoder.encode(account.getPassword());
+
+		account.setPassword(encodedPassword);
 		
+		account.setEmail(account.getEmail());
 		
-		if (account.getRole() == null) {
+		account.setName(account.getName());
+		account.setAddress(account.getAddress());
+		account.setAadhaar(account.getAadhaar());
+		account.setCity(account.getCity());
+		account.setPhone(account.getPhone());
+		account.setPincode(account.getPincode());
+		
+		if(account.getRole()=="Admin")
+		account.setRole(Roles.ADMIN.getRole());
+		if(account.getRole()=="Sales")
+			account.setRole(Roles.SALES.getRole());
+		if(account.getRole()=="Dispatcher")
+			account.setRole(Roles.DISPATCHER.getRole());
+		if(account.getRole()=="Biller")
 			account.setRole(Roles.BILLER.getRole());
-		}
+		
+	
 		return accountRepository.save(account);
 	}
+	
+	 public boolean adminExists(String email) {
+	        return accountRepository.findOneByEmailIgnoreCase(email).isPresent();
+	    }
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
