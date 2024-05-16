@@ -254,8 +254,11 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	<script th:src="@{/js/off-canvas.js}"></script>
 	<script th:src="@{/js/misc.js}"></script>
 	<script th:src="@{/js/dashboard.js}"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
 	<script type="text/javascript">
-
 
     $(document).ready(function() {
 
@@ -304,8 +307,36 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
         $('#product-btn-save').prop('disabled', true);
         $('#product-btn-edit').prop('disabled', false);
     }
+    
+    
+    
+    
+    
+    
+    //ADDItemPage JS
+        $("select").on("change", function() {
+        $(this).nextAll("input, label").remove();
+        if ($(this).prop("value") === "Upper Body") {
+            var text = document.getElementById("UpperBody");
+             text.style.display = "block";
+
+			var text1 = document.getElementById("LowerBody");
+            text1.style.display = "none";
+        }
+       else {
+            var text = document.getElementById("LowerBody");
+            text.style.display = "block";
+
+			var text2 = document.getElementById("UpperBody");
+            text2.style.display = "none";
+             }
+    });
 
 </script>
+
+
+
+
 
 
 </body>

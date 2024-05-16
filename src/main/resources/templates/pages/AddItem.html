@@ -31,41 +31,64 @@
 				
 				<!-- Select Category -->
 	            <div class="form-row">
-	                <!-- Category Name -->
-					<div class="form-group col-md-6">
-						<label for="selectSize">Select Category</label>
-						<select class="form-control" id="selectSize">
-							<option selected disabled>Select Category...</option>
-							<option>T-shirt</option>
-							<option>Shirt</option>
-							<option>Jeans</option>
-						</select>
-					</div>
+	                
 					
 					<!-- Item HSN / SAC -->
 					<div class="form-group col-md-6">
 						<label for="itemCode">Item  HSN / SAC</label>
 						<input type="text" class="form-control" id="itemCode" placeholder="Item HSN / SAC">
 					</div>
+					
+					
+					 <!-- Color -->
+	                <div class="form-group col-md-6">
+	                    <label for="color">Color</label>
+	                    <input type="text" class="form-control" id="color" placeholder="Enter color">
+	                </div>
 
 	                
 	            </div>
 
 	            <div class="form-row">
 					
-					<!-- Select Size -->
+					
+					<!-- Category Name -->
 					<div class="form-group col-md-6">
-						<label for="selectSize">Select Size</label>
-						<select class="form-control" id="selectSize">
-							<option selected disabled>Select size...</option>
-							<option>Small</option>
-							<option>Medium</option>
-							<option>Large</option>
+						<label for="selectCategory">Select Category</label>
+						<select class="form-control" id="selectCategory">
+							<!-- <option selected disabled>Select Category...</option> -->
+							<option>Upper Body</option>
+							<option>Lower Body</option>
 						</select>
 					</div>
 					
 					
-	                <!-- Select Unit -->
+					<!-- Select Product Type for Upper body -->
+					<div id = "UpperBody" class="form-group col-md-6" style="display: block;">
+						<label for="selectSize">Product Type</label>
+						<select class="form-control" id="selectSize">
+							<option selected disabled>Select Type...</option>
+							<option>Shirt</option>
+							<option>T-Shirt</option>
+						</select>
+					</div>
+					
+					
+					
+					<!-- Select Product Type for LOWER Body -->
+					<div id= "LowerBody" class="form-group col-md-6" style="display: none;">
+						<label for="selectSize">Product Type</label>
+						<select class="form-control" id="selectSize">
+							<option selected disabled>Select Type...</option>
+							<option>Jeans</option>
+							<option>Pants</option>
+							<option>Pajamas</option>
+						</select>
+					</div>
+					
+					
+													
+	                <!-- Select Unit 
 	                <div class="form-group col-md-6">
 	                    <label for="selectUnit">Select Unit</label>
 	                    <select class="form-control" id="selectUnit">
@@ -74,9 +97,74 @@
 	                        <option>Kilogram(s)</option>
 	                        <option>Gram(s)</option>
 	                    </select>
-	                </div>
+	                </div>-->
 
 	            </div>
+	            
+	            
+	            
+	       
+	            
+	            
+	            <!-- Quantity according to size -->
+	            <div class="form-row mt-5">
+	                
+					
+					<!-- size 28 -->
+					<div class="form-group col-md-2">
+						<label for="itemCode">Size 28</label>
+						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+					</div>
+					
+					
+					 <!-- size 32 -->
+					<div class="form-group col-md-2">
+						<label for="itemCode">Size 30</label>
+						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 28 -->
+					<div class="form-group col-md-2">
+						<label for="itemCode">Size 32</label>
+						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+					</div>
+					
+					
+					<!-- size 28 -->
+					<div class="form-group col-md-2">
+						<label for="itemCode">Size 34</label>
+						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 28 -->
+					<div class="form-group col-md-2">
+						<label for="itemCode">Size 36</label>
+						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 28 -->
+					<div class="form-group col-md-2">
+						<label for="itemCode">Size 38</label>
+						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+					</div>
+					
+					<div class="form-group col-md-2">
+						<label for="itemCode">Size 40</label>
+						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+					</div>
+					
+					
+					<!-- size 28 -->
+					<div class="form-group col-md-2">
+						<label for="itemCode">Exceptional Size</label>
+						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+					</div>
+
+	                
+	            </div>
+	            	          
+	            
+	            
 
 				<h4 class="blue-underline mt-4 mb-4 col-md-2 text-colour">PRICING</h4>
 				
@@ -127,6 +215,14 @@
 				</div>    
 	        </form>
 	    </div>
+	    
+	    
+	    <script type="text/javascript">
+	    
+	    
+	
+	    
+	    </script>
 </section>
 
 </body>
