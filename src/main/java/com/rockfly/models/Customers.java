@@ -34,6 +34,8 @@ public class Customers {
 	
 	private  String shippingAddress;
 	
+	private String pincode;
+	
 	private String documentType;
 	
 	private String documentNumber;
