@@ -13,18 +13,18 @@
 	        <h2 class="blue-underline mt-4 mb-4 col-md-12 text-colour">Add Item</h2>
 
 	        <!-- Add Item Form -->
-	        <form>
+	        <form th:action="@{/admin/addItem}" th:method="post">
 	            <div class="form-row">
 	                <!-- Item Name -->
 	                <div class="form-group col-md-6">
 	                    <label for="itemName">Item Name</label>
-	                    <input type="text" class="form-control" id="itemName" placeholder="Enter item name" required>
+	                    <input type="text" class="form-control" id="itemName" name="item_name" placeholder="Enter item name" required>
 	                </div>
 
 	                <!-- Item Code -->
 	                <div class="form-group col-md-6">
 	                    <label for="itemCode">Item Code</label>
-	                    <input type="text" class="form-control" id="itemCode" placeholder="Enter item code">
+	                    <input type="text" class="form-control" id="itemCode" name="item_code" placeholder="Enter item code">
 	                </div>
 	            </div>
 
@@ -36,14 +36,14 @@
 					<!-- Item HSN / SAC -->
 					<div class="form-group col-md-6">
 						<label for="itemCode">Item  HSN / SAC</label>
-						<input type="text" class="form-control" id="itemCode" placeholder="Item HSN / SAC">
+						<input type="text" class="form-control" id="itemCode" name="item_HSN_SAC" placeholder="Item HSN / SAC">
 					</div>
 					
 					
 					 <!-- Color -->
 	                <div class="form-group col-md-6">
 	                    <label for="color">Color</label>
-	                    <input type="text" class="form-control" id="color" placeholder="Enter color">
+	                    <input type="text" class="form-control" id="color" name="color" placeholder="Enter color">
 	                </div>
 
 	                
@@ -55,7 +55,7 @@
 					<!-- Category Name -->
 					<div class="form-group col-md-6">
 						<label for="selectCategory">Select Category</label>
-						<select class="form-control" id="selectCategory">
+						<select class="form-control" id="selectCategory" name="category_name">
 							<!-- <option selected disabled>Select Category...</option> -->
 							<option>Upper Body</option>
 							<option>Lower Body</option>
@@ -64,9 +64,9 @@
 					
 					
 					<!-- Select Product Type for Upper body -->
-					<div id = "UpperBody" class="form-group col-md-6" style="display: block;">
-						<label for="selectSize">Product Type</label>
-						<select class="form-control" id="selectSize">
+					<div id = "UpperBodyProductType" class="form-group col-md-6" style="display: block;">
+						<label for="selectProductTypeUpperBody">Product Type</label>
+						<select class="form-control" id="selectProductTypeUpperBody">
 							<option selected disabled>Select Type...</option>
 							<option>Shirt</option>
 							<option>T-Shirt</option>
@@ -77,8 +77,8 @@
 					
 					<!-- Select Product Type for LOWER Body -->
 					<div id= "LowerBody" class="form-group col-md-6" style="display: none;">
-						<label for="selectSize">Product Type</label>
-						<select class="form-control" id="selectSize">
+						<label for="selectProductTypeLowerBody">Product Type</label>
+						<select class="form-control" id="selectProductTypeLowerBody" name="product_type">
 							<option selected disabled>Select Type...</option>
 							<option>Jeans</option>
 							<option>Pants</option>
@@ -104,60 +104,112 @@
 	            
 	            
 	       
+	            <!-- Quantity according to size Upper Body-->
+	            <div id="sizeUpperBody" class="form-row mt-5">
+	                
+					
+					<!-- size S -->
+					<div class="form-group col-md-2">
+						<label for="sizeS">Size S</label>
+						<input type="text" class="form-control" id="sizeS" placeholder="Enter quantity">
+					</div>
+					
+					
+					 <!-- size M -->
+					<div class="form-group col-md-2">
+						<label for="sizeM">Size M</label>
+						<input type="text" class="form-control" id="sizeM" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size L -->
+					<div class="form-group col-md-2">
+						<label for="sizeL">Size L</label>
+						<input type="text" class="form-control" id="sizeL" placeholder="Enter quantity">
+					</div>
+					
+					
+					<!-- size XL -->
+					<div class="form-group col-md-2">
+						<label for="sizeXL">Size XL</label>
+						<input type="text" class="form-control" id="sizeXL" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 2XL -->
+					<div class="form-group col-md-2">
+						<label for="size2XL">Size 2XL</label>
+						<input type="text" class="form-control" id="size2XL" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 3XL -->
+					<div class="form-group col-md-2">
+						<label for="size3XL">Size 3XL</label>
+						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
+					</div>
+					
+					<!-- Exceptional Size -->
+					<div class="form-group col-md-2">
+						<label for="ExceptionalSize">Exceptional Size</label>
+						<input type="text" class="form-control" id="ExceptionalSize" placeholder="Enter quantity">
+					</div>
+
+	                
+	            </div>
 	            
 	            
-	            <!-- Quantity according to size -->
-	            <div class="form-row mt-5">
+	            
+	            <!-- Quantity according to size Lower Body-->
+	            <div id  ="sizeLowerBody" class="form-row mt-5" style="display: none;">
 	                
 					
 					<!-- size 28 -->
 					<div class="form-group col-md-2">
 						<label for="itemCode">Size 28</label>
-						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+						<input type="text" class="form-control" id="itemCode" name="size_28" placeholder="Enter quantity">
 					</div>
 					
 					
-					 <!-- size 32 -->
+					 <!-- size 30 -->
 					<div class="form-group col-md-2">
-						<label for="itemCode">Size 30</label>
-						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+						<label for="size30">Size 30</label>
+						<input type="text" class="form-control" id="size30" name="size_30" placeholder="Enter quantity">
 					</div>
 					
-					<!-- size 28 -->
+					<!-- size 32 -->
 					<div class="form-group col-md-2">
-						<label for="itemCode">Size 32</label>
-						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
-					</div>
-					
-					
-					<!-- size 28 -->
-					<div class="form-group col-md-2">
-						<label for="itemCode">Size 34</label>
-						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 28 -->
-					<div class="form-group col-md-2">
-						<label for="itemCode">Size 36</label>
-						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 28 -->
-					<div class="form-group col-md-2">
-						<label for="itemCode">Size 38</label>
-						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
-					</div>
-					
-					<div class="form-group col-md-2">
-						<label for="itemCode">Size 40</label>
-						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+						<label for="size32">Size 32</label>
+						<input type="text" class="form-control" id="size32" name="size_32" placeholder="Enter quantity">
 					</div>
 					
 					
-					<!-- size 28 -->
+					<!-- size 34 -->
 					<div class="form-group col-md-2">
-						<label for="itemCode">Exceptional Size</label>
-						<input type="text" class="form-control" id="itemCode" placeholder="Enter quantity">
+						<label for="size34">Size 34</label>
+						<input type="text" class="form-control" id="size34" name="size_34" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 36 -->
+					<div class="form-group col-md-2">
+						<label for="size36">Size 36</label>
+						<input type="text" class="form-control" id="size36" name="size_36" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 38 -->
+					<div class="form-group col-md-2">
+						<label for="size38">Size 38</label>
+						<input type="text" class="form-control" id="size38" name="size_38" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 40 -->
+					<div class="form-group col-md-2">
+						<label for="size40">Size 40</label>
+						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
+					</div>
+					
+					
+					<!-- Exceptional Size -->
+					<div class="form-group col-md-2">
+						<label for="ExceptionalSize">Exceptional Size</label>
+						<input type="text" class="form-control" id="ExceptionalSize" name="exceptional_Size" placeholder="Enter quantity">
 					</div>
 
 	                
@@ -173,23 +225,23 @@
 					<!-- Pricing Section -->
 					<div class="form-group col-md-6">
 						<label for="itemMRP">MRP (Maximum Retail Price)</label>
-						<input type="text" class="form-control" id="itemMRP" placeholder="Enter MRP"  required>
+						<input type="text" class="form-control" id="itemMRP" name="mrp" placeholder="Enter MRP"  required>
 					</div>
 					
 					<div class="form-group col-md-6">
 						<label for="itemSalePrice">Sale Price</label>
-						<input type="text" class="form-control" id="itemSalePrice" placeholder="Enter sale price"  required>
+						<input type="text" class="form-control" id="itemSalePrice" name="sale_price" placeholder="Enter sale price"  required>
 					</div>
 					
 					<div class="form-group col-md-6">
 						<label for="itemWholesalePrice">Wholesale Price</label>
-						<input type="text" class="form-control" id="itemWholesalePrice" placeholder="Enter wholesale price" 
+						<input type="text" class="form-control" id="itemWholesalePrice" name="wholesale_price" placeholder="Enter wholesale price" 
 							required>
 					</div>
 					
 					<div class="form-group col-md-6">
 						<label for="itemPurchasePrice">Purchase Price</label>
-						<input type="text" class="form-control" id="itemPurchasePrice" placeholder="Enter wholesale price"
+						<input type="text" class="form-control" id="itemPurchasePrice" name="purchase_price" placeholder="Enter wholesale price"
 							required>
 					</div>					       
 	            </div>
@@ -201,12 +253,12 @@
 								<!-- STOCK Section -->
 								<div class="form-group col-md-6">
 									<label for="itemOpening Stock">Opening Stock</label>
-									<input type="text" class="form-control" id="itemOpening Stock" placeholder="Enter Opening Stock" required>
+									<input type="text" class="form-control" id="itemOpening Stock" name="opening_Stock" placeholder="Enter Opening Stock" required>
 								</div>
 								
 								<div class="form-group col-md-6">
 									<label for="itemMInStockToMaintain">Min Stock To Maintain</label>
-									<input type="text" class="form-control" id="itemMInStockToMaintain" placeholder="Enter Min Stock To Maintain" required>
+									<input type="text" class="form-control" id="itemMInStockToMaintain" name="stock_to_Maintain" placeholder="Enter Min Stock To Maintain" required>
 								</div>       
 				            </div>
 							
