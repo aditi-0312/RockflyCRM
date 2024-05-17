@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.rockfly.dto.CustomerDTO;
@@ -27,6 +31,22 @@ public class CustomerServices {
 		return customers.stream()
 				.map(this::fromEntityToDTO)
 				.collect(Collectors.toList());
+	}
+	
+//	@SuppressWarnings("unchecked")
+//	public Page<CustomerDTO> getAllCustomers(int offset, int pageSize, String field) {
+//		Page<Customers> customers = customersRepository.findAll(PageRequest.of(offset, pageSize).withSort(Direction.ASC, field));
+//		return (Page<CustomerDTO>) customers.stream()
+//				.map(this::fromEntityToDTO)
+//				.collect(Collectors.toList());
+//	}
+	
+	public Page<CustomerDTO> getAllCustomers(int offset, int pageSize, String field) {
+	    Page<Customers> customers = customersRepository.findAll(PageRequest.of(offset, pageSize).withSort(Direction.ASC, field));
+	    List<CustomerDTO> customerDTOs = customers.stream()
+	            .map(this::fromEntityToDTO)
+	            .collect(Collectors.toList());
+	    return new PageImpl<>(customerDTOs, PageRequest.of(offset, pageSize), customers.getTotalElements());
 	}
 
 	public CustomerDTO fromEntityToDTO(Customers customers) {
