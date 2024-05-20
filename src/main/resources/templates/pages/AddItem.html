@@ -51,114 +51,34 @@
 
 	            <div class="form-row">
 					
-					
-					<!-- Category Name -->
-					<div class="form-group col-md-6">
-						<label for="selectCategory">Select Category</label>
-						<select class="form-control" id="selectCategory" name="category_name">
-							<!-- <option selected disabled>Select Category...</option> -->
-							<option>Upper Body</option>
-							<option>Lower Body</option>
-						</select>
-					</div>
-					
-					
 					<!-- Select Product Type for Upper body -->
-					<div id = "UpperBodyProductType" class="form-group col-md-6" style="display: block;">
+					<div class="form-group col-md-6" style="display: block;">
 						<label for="selectProductTypeUpperBody">Product Type</label>
 						<select class="form-control" id="selectProductTypeUpperBody">
 							<option selected disabled>Select Type...</option>
 							<option>Shirt</option>
 							<option>T-Shirt</option>
-						</select>
-					</div>
-					
-					
-					
-					<!-- Select Product Type for LOWER Body -->
-					<div id= "LowerBody" class="form-group col-md-6" style="display: none;">
-						<label for="selectProductTypeLowerBody">Product Type</label>
-						<select class="form-control" id="selectProductTypeLowerBody" name="product_type">
-							<option selected disabled>Select Type...</option>
 							<option>Jeans</option>
 							<option>Pants</option>
 							<option>Pajamas</option>
 						</select>
 					</div>
 					
-					
-													
-	                <!-- Select Unit 
-	                <div class="form-group col-md-6">
-	                    <label for="selectUnit">Select Unit</label>
-	                    <select class="form-control" id="selectUnit">
-	                        <option selected disabled>Select unit...</option>
-	                        <option>Piece(s)</option>
-	                        <option>Kilogram(s)</option>
-	                        <option>Gram(s)</option>
-	                    </select>
-	                </div>-->
+					<!-- Category Name -->
+					<div class="form-group col-md-6">
+						<label for="selectCategory">Select Size</label>
+						<select class="form-control" id="selectCategory" name="category_name">
+							<!-- <option selected disabled>Select Category...</option> -->
+							<option>Numeric</option>
+							<option>Alpha Numeric</option>
+						</select>
+					</div>     
 
 	            </div>
+	            	            
 	            
-	            
-	            
-	       
-	            <!-- Quantity according to size Upper Body-->
-	            <div id="sizeUpperBody" class="form-row mt-5">
-	                
-					
-					<!-- size S -->
-					<div class="form-group col-md-2">
-						<label for="sizeS">Size S</label>
-						<input type="text" class="form-control" id="sizeS" placeholder="Enter quantity">
-					</div>
-					
-					
-					 <!-- size M -->
-					<div class="form-group col-md-2">
-						<label for="sizeM">Size M</label>
-						<input type="text" class="form-control" id="sizeM" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size L -->
-					<div class="form-group col-md-2">
-						<label for="sizeL">Size L</label>
-						<input type="text" class="form-control" id="sizeL" placeholder="Enter quantity">
-					</div>
-					
-					
-					<!-- size XL -->
-					<div class="form-group col-md-2">
-						<label for="sizeXL">Size XL</label>
-						<input type="text" class="form-control" id="sizeXL" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 2XL -->
-					<div class="form-group col-md-2">
-						<label for="size2XL">Size 2XL</label>
-						<input type="text" class="form-control" id="size2XL" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 3XL -->
-					<div class="form-group col-md-2">
-						<label for="size3XL">Size 3XL</label>
-						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
-					</div>
-					
-					<!-- Exceptional Size -->
-					<div class="form-group col-md-2">
-						<label for="ExceptionalSize">Exceptional Size</label>
-						<input type="text" class="form-control" id="ExceptionalSize" placeholder="Enter quantity">
-					</div>
-
-	                
-	            </div>
-	            
-	            
-	            
-	            <!-- Quantity according to size Lower Body-->
-	            <div id  ="sizeLowerBody" class="form-row mt-5" style="display: none;">
+	            <!-- Quantity according to size Numeric-->
+	            <div id  ="sizeNumeric" class="form-row mt-5">
 	                
 					
 					<!-- size 28 -->
@@ -205,18 +125,116 @@
 						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
 					</div>
 					
-					
-					<!-- Exceptional Size -->
+					<!-- size 42 -->
 					<div class="form-group col-md-2">
-						<label for="ExceptionalSize">Exceptional Size</label>
-						<input type="text" class="form-control" id="ExceptionalSize" name="exceptional_Size" placeholder="Enter quantity">
+						<label for="size40">Size 42</label>
+						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
 					</div>
-
+					
+					<!-- size 44 -->
+					<div class="form-group col-md-2">
+						<label for="size40">Size 44</label>
+						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 46 -->
+					<div class="form-group col-md-2">
+						<label for="size40">Size 46</label>
+						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 48 -->
+					<div class="form-group col-md-2">
+						<label for="size40">Size 48</label>
+						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 50 -->
+					<div class="form-group col-md-2">
+						<label for="size40">Size 50</label>
+						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
+					</div>
 	                
 	            </div>
 	            	          
 	            
-	            
+	             <!-- Quantity according to size AlphaNumeric-->
+	            <div id="sizeAlphaNumeric" class="form-row mt-5" style="display: none;">	                
+					
+					<!-- size XS -->
+					<div class="form-group col-md-2">
+						<label for="sizeS">Size XS (30-32)</label>
+						<input type="text" class="form-control" id="sizeS" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size S -->
+					<div class="form-group col-md-2">
+						<label for="sizeS">Size S (34-36)</label>
+						<input type="text" class="form-control" id="sizeS" placeholder="Enter quantity">
+					</div>					
+					
+					 <!-- size M -->
+					<div class="form-group col-md-2">
+						<label for="sizeM">Size M (38-40)</label>
+						<input type="text" class="form-control" id="sizeM" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size L -->
+					<div class="form-group col-md-2">
+						<label for="sizeL">Size L (42-44)</label>
+						<input type="text" class="form-control" id="sizeL" placeholder="Enter quantity">
+					</div>
+					
+					
+					<!-- size XL -->
+					<div class="form-group col-md-2">
+						<label for="sizeXL">Size XL (46-48)</label>
+						<input type="text" class="form-control" id="sizeXL" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 2XL -->
+					<div class="form-group col-md-2">
+						<label for="size2XL">Size 2XL (50-52)</label>
+						<input type="text" class="form-control" id="size2XL" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 3XL -->
+					<div class="form-group col-md-2">
+						<label for="size3XL">Size 3XL (54-56)</label>
+						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 4XL -->
+					<div class="form-group col-md-2">
+						<label for="size3XL">Size 4XL (58-60)</label>
+						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 5XL -->
+					<div class="form-group col-md-2">
+						<label for="size3XL">Size 5XL (62-64)</label>
+						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 6XL -->
+					<div class="form-group col-md-2">
+						<label for="size3XL">Size 6XL (66-68)</label>
+						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
+					</div>
+					
+					<!-- size 7XL -->
+					<div class="form-group col-md-2">
+						<label for="size3XL">Size 7XL (70-72)</label>
+						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
+					</div>
+	                
+	                <!-- size 8XL -->
+					<div class="form-group col-md-2">
+						<label for="size3XL">Size 7XL (74-76)</label>
+						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
+					</div>
+	            </div>
+	            	            
 
 				<h4 class="blue-underline mt-4 mb-4 col-md-2 text-colour">PRICING</h4>
 				
