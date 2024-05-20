@@ -28,8 +28,8 @@ public class MainStockServiceImpl implements MainStockService {
 //		
 //		lowerBody_MainStock.setPrice(savePrice);
 		
-		lowerBody_MainStockRepository.save(lowerBody_MainStock);
-		return null;
+		
+		return lowerBody_MainStockRepository.save(lowerBody_MainStock);
 	}
 
 }
