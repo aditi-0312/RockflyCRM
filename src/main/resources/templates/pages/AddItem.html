@@ -45,6 +45,20 @@
 	                    <label for="color">Color</label>
 	                    <input type="text" class="form-control" id="color" name="color" placeholder="Enter color">
 	                </div>
+	                
+	                
+	                <!-- Select Color 
+					<div class="form-group col-md-6">
+						<label for="color">Select Color</label>
+						<select class="form-control" id="color" name="color">
+							<option selected disabled>Select Color...</option>
+							<option>White</option>
+							<option>Green</option>
+							<option>Black</option>
+							<option>Blue</option>
+							<option>Yellow</option>
+						</select>
+					</div> -->
 
 	                
 	            </div>
@@ -52,9 +66,9 @@
 	            <div class="form-row">
 					
 					<!-- Select Product Type for Upper body -->
-					<div class="form-group col-md-6" style="display: block;">
+					<div class="form-group col-md-6">
 						<label for="selectProductTypeUpperBody">Product Type</label>
-						<select class="form-control" id="selectProductTypeUpperBody">
+						<select class="form-control" id="selectProductTypeUpperBody" name="product_type">
 							<option selected disabled>Select Type...</option>
 							<option>Shirt</option>
 							<option>T-Shirt</option>
@@ -64,177 +78,58 @@
 						</select>
 					</div>
 					
-					<!-- Category Name -->
+					<!-- Category Name  
 					<div class="form-group col-md-6">
 						<label for="selectCategory">Select Size</label>
-						<select class="form-control" id="selectCategory" name="category_name">
-							<!-- <option selected disabled>Select Category...</option> -->
+						<select class="form-control" id="selectCategory">
 							<option>Numeric</option>
 							<option>Alpha Numeric</option>
 						</select>
-					</div>     
+					</div>   -->  
+					
+					
+					<!-- Select Numeric Size -->
+					<div id="sizeNumeric" class="form-group col-md-6" >
+						<label for="NumericSize">Select Size</label>
+						<select class="form-control" id="NumericSize" name="size">
+							<option selected disabled>Select Size...</option>
+							<option>size_28</option>
+							<option>size_30</option>
+							<option>size_32</option>
+							<option>size_34</option>
+							<option>size_36</option>
+							<option>size_40</option>
+							<option>size_42</option>
+							<option>size_44</option>
+							<option>size_46</option>
+							<option>size_48</option>
+							<option>size_50</option>	
+						</select>
+					</div>
+					
+					
+					<!-- Select Alpha Numeric Size -->
+					<div id="sizeAlphaNumeric" class="form-group col-md-6" style="display: none;">
+						<label for="alphaNumeric">Select Size</label>
+						<select class="form-control" id="alphaNumeric" name="product_type">
+							<option selected disabled>Select Size...</option>
+							<option>Size XS (30-32)</option>
+							<option>Size S (34-36)</option>
+							<option>Size M (38-40)</option>
+							<option>Size L (42-44)</option>
+							<option>Size XL (46-48)</option>
+							<option>Size 2XL (50-52)</option>
+							<option>Size 3XL (54-56)</option>
+							<option>Size 4XL (58-60)</option>
+							<option>Size 5XL (62-64)</option>
+							<option>Size 6XL (66-68)</option>
+							<option>Size 7XL (70-72)</option>
+							<option>Size 8XL (74-76)</option>
+						</select>
+					</div>
+					
 
-	            </div>
-	            	            
-	            
-	            <!-- Quantity according to size Numeric-->
-	            <div id  ="sizeNumeric" class="form-row mt-5">
-	                
-					
-					<!-- size 28 -->
-					<div class="form-group col-md-2">
-						<label for="itemCode">Size 28</label>
-						<input type="text" class="form-control" id="itemCode" name="size_28" placeholder="Enter quantity">
-					</div>
-					
-					
-					 <!-- size 30 -->
-					<div class="form-group col-md-2">
-						<label for="size30">Size 30</label>
-						<input type="text" class="form-control" id="size30" name="size_30" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 32 -->
-					<div class="form-group col-md-2">
-						<label for="size32">Size 32</label>
-						<input type="text" class="form-control" id="size32" name="size_32" placeholder="Enter quantity">
-					</div>
-					
-					
-					<!-- size 34 -->
-					<div class="form-group col-md-2">
-						<label for="size34">Size 34</label>
-						<input type="text" class="form-control" id="size34" name="size_34" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 36 -->
-					<div class="form-group col-md-2">
-						<label for="size36">Size 36</label>
-						<input type="text" class="form-control" id="size36" name="size_36" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 38 -->
-					<div class="form-group col-md-2">
-						<label for="size38">Size 38</label>
-						<input type="text" class="form-control" id="size38" name="size_38" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 40 -->
-					<div class="form-group col-md-2">
-						<label for="size40">Size 40</label>
-						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 42 -->
-					<div class="form-group col-md-2">
-						<label for="size40">Size 42</label>
-						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 44 -->
-					<div class="form-group col-md-2">
-						<label for="size40">Size 44</label>
-						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 46 -->
-					<div class="form-group col-md-2">
-						<label for="size40">Size 46</label>
-						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 48 -->
-					<div class="form-group col-md-2">
-						<label for="size40">Size 48</label>
-						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 50 -->
-					<div class="form-group col-md-2">
-						<label for="size40">Size 50</label>
-						<input type="text" class="form-control" id="size40" name="size_40" placeholder="Enter quantity">
-					</div>
-	                
-	            </div>
-	            	          
-	            
-	             <!-- Quantity according to size AlphaNumeric-->
-	            <div id="sizeAlphaNumeric" class="form-row mt-5" style="display: none;">	                
-					
-					<!-- size XS -->
-					<div class="form-group col-md-2">
-						<label for="sizeS">Size XS (30-32)</label>
-						<input type="text" class="form-control" id="sizeS" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size S -->
-					<div class="form-group col-md-2">
-						<label for="sizeS">Size S (34-36)</label>
-						<input type="text" class="form-control" id="sizeS" placeholder="Enter quantity">
-					</div>					
-					
-					 <!-- size M -->
-					<div class="form-group col-md-2">
-						<label for="sizeM">Size M (38-40)</label>
-						<input type="text" class="form-control" id="sizeM" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size L -->
-					<div class="form-group col-md-2">
-						<label for="sizeL">Size L (42-44)</label>
-						<input type="text" class="form-control" id="sizeL" placeholder="Enter quantity">
-					</div>
-					
-					
-					<!-- size XL -->
-					<div class="form-group col-md-2">
-						<label for="sizeXL">Size XL (46-48)</label>
-						<input type="text" class="form-control" id="sizeXL" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 2XL -->
-					<div class="form-group col-md-2">
-						<label for="size2XL">Size 2XL (50-52)</label>
-						<input type="text" class="form-control" id="size2XL" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 3XL -->
-					<div class="form-group col-md-2">
-						<label for="size3XL">Size 3XL (54-56)</label>
-						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 4XL -->
-					<div class="form-group col-md-2">
-						<label for="size3XL">Size 4XL (58-60)</label>
-						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 5XL -->
-					<div class="form-group col-md-2">
-						<label for="size3XL">Size 5XL (62-64)</label>
-						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 6XL -->
-					<div class="form-group col-md-2">
-						<label for="size3XL">Size 6XL (66-68)</label>
-						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
-					</div>
-					
-					<!-- size 7XL -->
-					<div class="form-group col-md-2">
-						<label for="size3XL">Size 7XL (70-72)</label>
-						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
-					</div>
-	                
-	                <!-- size 8XL -->
-					<div class="form-group col-md-2">
-						<label for="size3XL">Size 7XL (74-76)</label>
-						<input type="text" class="form-control" id="size3XL" placeholder="Enter quantity">
-					</div>
-	            </div>
-	            	            
+	            </div>	            	                        	            
 
 				<h4 class="blue-underline mt-4 mb-4 col-md-2 text-colour">PRICING</h4>
 				

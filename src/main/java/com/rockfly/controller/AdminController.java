@@ -18,10 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.rockfly.dto.CustomerDTO;
 import com.rockfly.models.Account;
 import com.rockfly.models.Customers;
-import com.rockfly.models.LowerBody_MainStock;
 import com.rockfly.services.AccountService;
 import com.rockfly.services.CustomerServices;
-import com.rockfly.services.MainStockService;
 
 @Controller
 @RequestMapping("/admin")
@@ -33,9 +31,6 @@ public class AdminController {
 	@Autowired
 	private CustomerServices customerServices;
 
-	
-	@Autowired
-	private MainStockService mainStockService;
 
 	@PostMapping("/addEmployee")
 	public String register_accountString(@ModelAttribute Account account) {
@@ -62,9 +57,8 @@ public class AdminController {
 	
 	//Saving Item in database
 	@PostMapping("/addItem")
-	public String saveItem(@ModelAttribute LowerBody_MainStock lowerBody_MainStock) {
+	public String saveItem() {
 		
-		mainStockService.saveLowerBodyMainStock(lowerBody_MainStock);
 		return "redirect:/admin/addItem";
 	}
 	
