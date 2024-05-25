@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 import com.rockfly.models.Account;
 import com.rockfly.models.Authority;
-import com.rockfly.services.AccountService;
-import com.rockfly.services.AuthorityService;
+import com.rockfly.services.Impl.AccountServiceImpl;
+import com.rockfly.services.Impl.AuthorityServiceImpl;
 import com.rockfly.util.constants.Privileges;
 import com.rockfly.util.constants.Roles;
 
@@ -18,10 +18,10 @@ import com.rockfly.util.constants.Roles;
 public class SeedData implements CommandLineRunner{
 	
 	@Autowired
-	private AccountService accountService;
+	private AccountServiceImpl accountService;
 	
 	@Autowired
-	private AuthorityService authorityService;
+	private AuthorityServiceImpl authorityService;
 
 	@Override
 	public void run(String... args) throws Exception {

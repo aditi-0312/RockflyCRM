@@ -18,18 +18,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.rockfly.dto.CustomerDTO;
 import com.rockfly.models.Account;
 import com.rockfly.models.Customers;
-import com.rockfly.services.AccountService;
-import com.rockfly.services.CustomerServices;
+import com.rockfly.services.Impl.AccountServiceImpl;
+import com.rockfly.services.Impl.CustomerServiceImpl;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
 	@Autowired
-	private AccountService accountService;
+	private AccountServiceImpl accountService;
 
 	@Autowired
-	private CustomerServices customerServices;
+	private CustomerServiceImpl customerServices;
 
 
 	@PostMapping("/addEmployee")
@@ -120,6 +120,12 @@ public class AdminController {
 		model.addAttribute("customers", customers_on_page);
 		return "pages/CustomerList";
 
+	}
+	
+	@GetMapping("/documentType")
+	public String manageDocumentType(Model model) {
+		
+		return "redirect:/admin/addCustomer";
 	}
 	
 }
