@@ -20,6 +20,7 @@ import com.rockfly.models.Account;
 import com.rockfly.models.AddItemInput;
 import com.rockfly.models.AlphaNumericSize;
 import com.rockfly.models.Customers;
+
 import com.rockfly.models.NumericSize;
 import com.rockfly.models.ProductType;
 import com.rockfly.services.AccountService;
@@ -28,14 +29,19 @@ import com.rockfly.services.CustomerServices;
 import com.rockfly.services.NumericSizeService;
 import com.rockfly.services.ProductTypeService;
 
+import com.rockfly.services.Impl.AccountServiceImpl;
+import com.rockfly.services.Impl.CustomerServiceImpl;
+
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
 	@Autowired
-	private AccountService accountService;
+	private AccountServiceImpl accountService;
 
 	@Autowired
+
 	private CustomerServices customerServices;
 	
 	@Autowired
@@ -46,6 +52,8 @@ public class AdminController {
 	
 	@Autowired
 	private AlphaNumericSizeService alphaNumericSizeService;
+
+	private CustomerServiceImpl customerServices;
 
 
 	@PostMapping("/addEmployee")
@@ -175,6 +183,12 @@ public class AdminController {
 		model.addAttribute("customers", customers_on_page);
 		return "pages/CustomerList";
 
+	}
+	
+	@GetMapping("/documentType")
+	public String manageDocumentType(Model model) {
+		
+		return "redirect:/admin/addCustomer";
 	}
 	
 }

@@ -1,4 +1,4 @@
-package com.rockfly.services;
+package com.rockfly.services.Impl;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,19 +13,22 @@ import org.springframework.stereotype.Service;
 import com.rockfly.dto.CustomerDTO;
 import com.rockfly.models.Customers;
 import com.rockfly.repositories.CustomersRepository;
+import com.rockfly.services.CustomerService;
 
 @Service
-public class CustomerServices {
+public class CustomerServiceImpl implements CustomerService{
 
 	@Autowired
 	private CustomersRepository customersRepository;
 
+	@Override
 	public Customers save(Customers customers) {
 
 		return customersRepository.save(customers);
 
 	}
 
+	@Override
 	public List<CustomerDTO> getAllCustomers() {
 		List<Customers> customers = customersRepository.findAll();
 		return customers.stream()
@@ -41,6 +44,7 @@ public class CustomerServices {
 //				.collect(Collectors.toList());
 //	}
 	
+	@Override
 	public Page<CustomerDTO> getAllCustomers(int offset, int pageSize, String field) {
 	    Page<Customers> customers = customersRepository.findAll(PageRequest.of(offset, pageSize).withSort(Direction.ASC, field));
 	    List<CustomerDTO> customerDTOs = customers.stream()
@@ -49,6 +53,7 @@ public class CustomerServices {
 	    return new PageImpl<>(customerDTOs, PageRequest.of(offset, pageSize), customers.getTotalElements());
 	}
 
+	@Override
 	public CustomerDTO fromEntityToDTO(Customers customers) {
 		return new CustomerDTO(customers.getName(), customers.getOpeningBalance(), customers.getAsOfDate());
 	}
