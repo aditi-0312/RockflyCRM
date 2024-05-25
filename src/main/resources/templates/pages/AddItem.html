@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org "
+<html xmlns:th="http://www.thymeleaf.org"
 	th:replace="layout::layout(~{::section})">
 <head>
 <meta charset="ISO-8859-1">
@@ -10,8 +10,7 @@
 	<section class="content-wrapper">
 		<div class="container shadow-sm border rounded mt-4 mb-4 bg-white">
 
-			<h2 class="blue-underline mt-4 mb-4 col-md-12 text-colour">Add
-				Item</h2>
+			<h2 class="blue-underline mt-4 mb-4 col-md-12 text-colour">Add Item</h2>
 
 			<!-- Add Item Form -->
 			<form th:action="@{/admin/addItem}" th:method="post">
@@ -76,11 +75,11 @@
 							class="form-control" id="selectProductTypeUpperBody"
 							name="product_type">
 							<option selected disabled>Select Type...</option>
+							<!-- <option th:each="product : ${productType}" th:text="${product.productName}"></option> -->
 							<option>Shirt</option>
 							<option>T-Shirt</option>
 							<option>Jeans</option>
-							<option>Pants</option>
-							<option>Pajamas</option>
+							<option>Jacket</option>
 						</select>
 					</div>
 
@@ -118,7 +117,7 @@
 					<div id="sizeAlphaNumeric" class="form-group col-md-6"
 						style="display: none;">
 						<label for="alphaNumeric">Select Size</label> <select
-							class="form-control" id="alphaNumeric" name="product_type">
+							class="form-control" id="alphaNumeric" name="size">
 							<option selected disabled>Select Size...</option>
 							<option>Size XS (30-32)</option>
 							<option>Size S (34-36)</option>
@@ -137,6 +136,22 @@
 
 
 				</div>
+				
+				
+				
+				<!-- Quantity  -->
+				<div class="form-row">
+				
+					<!-- Color -->
+					<div class="form-group col-md-6">
+						<label for="quantity">Quantity</label> <input type="text"
+							class="form-control" id="quantity" name="quantity"
+							placeholder="Enter Quantity">
+					</div>
+
+				</div>
+				
+				
 
 				<h4 class="blue-underline mt-4 mb-4 col-md-2 text-colour">PRICING</h4>
 
@@ -168,14 +183,18 @@
 							name="purchase_price" placeholder="Enter wholesale price"
 							required>
 					</div>
+					
+					<!-- <div class="form-group col-md-6">
+						<label for="itemTaxRate">Tax Rate</label> <input
+							type="text" class="form-control" id="itemTaxRate"
+							name="purchase_price" placeholder="Enter Tax Rate"
+							required>
+					</div> -->
 				</div>
 
 
-
-
 				<div class=" text-center border-top mt-4">
-					<button type="submit" class="btn btn-success mb-4 mt-4 col-4">Add
-						Item</button>
+					<button type="submit" class="btn btn-success mb-4 mt-4 col-4">Add Item</button>
 				</div>
 			</form>
 		</div>

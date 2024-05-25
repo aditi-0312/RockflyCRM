@@ -136,6 +136,11 @@
 						<div class="collapse" id="ui-basic">
 
 							<ul class="nav flex-column sub-menu">
+
+								<!-- <li class="nav-item"><a class="nav-link" href="#" th:href="@{/admin/addProductAndSize}">Add Product/Size</a>
+								</li> -->
+								
+								<li class="nav-item"><a class="nav-link" href="#" th:href = "@{/admin/addItem}">Add Item</a>
 								<li class="nav-item"><a class="nav-link" href="#" th:href="@{/admin/addItem}">Add
 										Item</a>
 								</li>
@@ -149,6 +154,22 @@
 
 						</div>
 					</li>
+			
+					
+						<!-- Add Customer  -->
+						
+						<li class="nav-item">
+						
+							<a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic"> 
+								<i class="menu-icon mdi mdi-account-multiple-plus"></i> 
+								<span class="menu-title">Customers</span> <i class="menu-arrow"></i>
+							</a>
+							
+							<div class="collapse" id="ui-basic1">
+								<ul class="nav flex-column sub-menu">
+									<li class="nav-item"><a class="nav-link" href="#" th:href = "@{/admin/addCustomer}">Add Customer</a></li>
+									<li class="nav-item"><a class="nav-link" href="#" th:href="@{/admin/customers}">Customer List</a></li>
+								</ul>
 
 
 

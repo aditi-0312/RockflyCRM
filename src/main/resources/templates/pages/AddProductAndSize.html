@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="layout::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<section class="content-wrapper">
+
+ 	 <div class="row">
+			<div class="col-lg-4 grid-margin stretch-card">		
+            <div class="card">
+					<div class="card-body">
+					
+					
+					<form th:action = "@{/admin/addProductType}" method="post" class="form-inline mb-5">
+						<div class="form-group mx-sm-3 mb-2">
+							<label for="inputProduct" class="sr-only">Product Type</label> 
+							<input type="text" class="form-control" id="inputProduct" name="productName" placeholder="Product Type">
+						</div>
+						<button type="submit" class="btn btn-primary mb-2">Add Product</button>
+					</form>
+					
+					
+                    <h4 class="card-title blue-underline col-md-12 text-colour">Product List</h4>
+                    
+					
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Product Type</th>
+                                <th>Action</th>                           
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="product : ${productType}">
+                                <td class="py-1" th:text="${product.id}"></td>
+                                <td th:text="${product.productName}"></td>
+                                <td>
+                                    <a type="button" class="btn btn-danger text-white">Delete</a>
+                                </td>
+                                
+                            </tr>                           
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+        
+        <div class="col-lg-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+						<form th:action="@{/admin/addNumericSize}" method="post" class="form-inline mb-5">
+							<div class="form-group mx-sm-3 mb-2">
+								<label for="inputNumericSize" class="sr-only">Numeric Size</label> 
+								<input type="text" class="form-control" id="inputNumericSize" name="size" placeholder="Numeric Size">
+							</div>
+							<button type="submit" class="btn btn-primary mb-2">Add Size</button>
+						</form>
+
+
+						<h4 class="card-title blue-underline col-md-12 text-colour">Size Numeric List</h4>
+                    
+					
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Size</th>
+                                <th>Action</th>                           
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="numericsize : ${numericSize}">
+                                <td th:text="${numericsize.id}" class="py-1"></td>
+                                <td th:text="${numericsize.size}"></td>
+                                <td>
+                                    <a type="button" class="btn btn-danger text-white">Delete</a>
+                                </td>
+                                
+                            </tr>                           
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+         <div class="col-lg-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+ 
+						<form th:action="@{/admin/addAlphaNumericSize}" th:method="post" class="form-inline mb-5">
+							<div class="form-group mx-sm-3 mb-2">
+								<label for="inputAlphaNumericSize" class="sr-only">AlphaNumeric Size</label> 
+								<input type="text" class="form-control" id="inputAlphaNumericSize" name="size" placeholder="Alpha-Numeric Size">
+							</div>
+							<button type="submit" class="btn btn-primary mb-2">Add Size</button>
+						</form>
+
+						<h4 class="card-title blue-underline col-md-12 text-colour">Size AlphaNumeric List</h4>
+                    
+					
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Size</th>
+                                <th>Action</th>                           
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="AlphaNumeric : ${AlphanumericSize}">
+                                <td th:text="${AlphaNumeric.id}" class="py-1">1</td>
+                                <td th:text="${AlphaNumeric.size}">Herman Beck</td>
+                                <td>
+                                    <a type="button" class="btn btn-danger text-white">Delete</a>
+                                </td>
+                                
+                            </tr>                           
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+        
+      </div> 
+
+
+
+</section>
+
+</body>
+</html>
