@@ -90,7 +90,7 @@ public class MainStockServiceImpl implements MainStockService{
 	
 	
 	public MainStockDTO fromEntityToDTO(MainStock mainStock) {
-		return new MainStockDTO(mainStock.getItemName(), mainStock.getItemCode(), mainStock.getItemHsnSac(),
+		return new MainStockDTO(mainStock.getId(), mainStock.getItemName(), mainStock.getItemCode(), mainStock.getItemHsnSac(),
 				mainStock.getColor(), mainStock.getProductType(), mainStock.getSize(), mainStock.getQuantity(),
 				mainStock.getPrice());
 	}
