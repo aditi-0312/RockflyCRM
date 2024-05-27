@@ -23,14 +23,13 @@ import com.rockfly.models.Customers;
 
 import com.rockfly.models.NumericSize;
 import com.rockfly.models.ProductType;
-import com.rockfly.services.AccountService;
 import com.rockfly.services.AlphaNumericSizeService;
-import com.rockfly.services.CustomerServices;
+import com.rockfly.services.CustomerService;
+import com.rockfly.services.MainStockService;
 import com.rockfly.services.NumericSizeService;
 import com.rockfly.services.ProductTypeService;
 
 import com.rockfly.services.Impl.AccountServiceImpl;
-import com.rockfly.services.Impl.CustomerServiceImpl;
 
 
 @Controller
@@ -41,8 +40,7 @@ public class AdminController {
 	private AccountServiceImpl accountService;
 
 	@Autowired
-
-	private CustomerServices customerServices;
+	private CustomerService customerServices;
 	
 	@Autowired
 	private ProductTypeService productTypeService;
@@ -52,8 +50,9 @@ public class AdminController {
 	
 	@Autowired
 	private AlphaNumericSizeService alphaNumericSizeService;
-
-	private CustomerServiceImpl customerServices;
+	
+	@Autowired
+	private MainStockService mainStockService;
 
 
 	@PostMapping("/addEmployee")
@@ -84,6 +83,8 @@ public class AdminController {
 	//Saving Item in database
 	@PostMapping("/addItem")
 	public String saveItem(@ModelAttribute AddItemInput addItemInput) {
+		
+		mainStockService.saveItem(addItemInput);
 		
 		return "redirect:/admin/addItem";
 	}

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,37 +13,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AddItemInput {
+public class Price {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String itemName;
 	
-	private String itemCode;
-	
-	private String itemHsnSac;
-	
-	private String color;
-	
-	private String productType;
-	
-	
-	//Size
-	private String size;	
-	
-	//Quantity
-	private String quantity;
-	
-	//Price
+	// Price
 	private Long mrp;
-	
+
 	private Long salePrice;
-	
+
 	private Long wholesalePrice;
-	
+
 	private Long purchasePrice;
-	
+
 	/* private String tax_rate; */
+	
+	@OneToOne(mappedBy = "price")
+	private MainStock shirtMainStock;
 }

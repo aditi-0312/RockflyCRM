@@ -1,9 +1,12 @@
 package com.rockfly.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AddItemInput {
+public class MainStock {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,8 +29,7 @@ public class AddItemInput {
 	
 	private String color;
 	
-	private String productType;
-	
+	private String productType;	
 	
 	//Size
 	private String size;	
@@ -35,14 +37,7 @@ public class AddItemInput {
 	//Quantity
 	private String quantity;
 	
-	//Price
-	private Long mrp;
-	
-	private Long salePrice;
-	
-	private Long wholesalePrice;
-	
-	private Long purchasePrice;
-	
-	/* private String tax_rate; */
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "price_id")
+	private Price price;
 }
