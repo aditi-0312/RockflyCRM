@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MainStockDTO {
 
+	private Long id;
+	
 	private String itemName;
 
 	private String itemCode;
