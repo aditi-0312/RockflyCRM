@@ -13,15 +13,15 @@ public class MainStockDTO {
 
 	private Long id;
 	
-	private String itemName;
+	private String productType;
 
-	private String itemCode;
+	private String styleNumber;
 
 	private String itemHsnSac;
 
 	private String color;
 
-	private String productType;
+	private String productSpecification;
 
 	// Size
 	private String size;

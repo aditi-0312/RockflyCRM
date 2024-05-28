@@ -25,8 +25,8 @@ public class MainStockServiceImpl implements MainStockService{
 	public void saveItem(AddItemInput addItemInput) {
 			
 			MainStock shirtMainStock = new MainStock();
-			shirtMainStock.setItemName(addItemInput.getItemName());
-			shirtMainStock.setItemCode(addItemInput.getItemCode());
+			shirtMainStock.setProductSpecification(addItemInput.getProductSpecification());
+			shirtMainStock.setStyleNumber(addItemInput.getStyleNumber());
 			shirtMainStock.setItemHsnSac(addItemInput.getItemHsnSac());
 			shirtMainStock.setColor(addItemInput.getColor());
 			shirtMainStock.setProductType(addItemInput.getProductType());
@@ -90,8 +90,8 @@ public class MainStockServiceImpl implements MainStockService{
 	
 	
 	public MainStockDTO fromEntityToDTO(MainStock mainStock) {
-		return new MainStockDTO(mainStock.getId(), mainStock.getItemName(), mainStock.getItemCode(), mainStock.getItemHsnSac(),
-				mainStock.getColor(), mainStock.getProductType(), mainStock.getSize(), mainStock.getQuantity(),
+		return new MainStockDTO(mainStock.getId(), mainStock.getProductType(), mainStock.getStyleNumber(), mainStock.getItemHsnSac(),
+				mainStock.getColor(), mainStock.getProductSpecification(), mainStock.getSize(), mainStock.getQuantity(),
 				mainStock.getPrice());
 	}
 
