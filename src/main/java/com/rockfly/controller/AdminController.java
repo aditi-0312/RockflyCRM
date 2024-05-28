@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rockfly.dto.CustomerDTO;
+import com.rockfly.dto.MainStockDTO;
 import com.rockfly.models.Account;
 import com.rockfly.models.AddItemInput;
 import com.rockfly.models.AlphaNumericSize;
@@ -31,7 +32,6 @@ import com.rockfly.services.ProductTypeService;
 
 import com.rockfly.services.Impl.AccountServiceImpl;
 
-
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -41,19 +41,18 @@ public class AdminController {
 
 	@Autowired
 	private CustomerService customerServices;
-	
+
 	@Autowired
 	private ProductTypeService productTypeService;
-	
+
 	@Autowired
 	private NumericSizeService numericSizeService;
-	
+
 	@Autowired
 	private AlphaNumericSizeService alphaNumericSizeService;
-	
+
 	@Autowired
 	private MainStockService mainStockService;
-
 
 	@PostMapping("/addEmployee")
 	public String register_accountString(@ModelAttribute Account account) {
@@ -69,55 +68,53 @@ public class AdminController {
 
 	}
 
-	
-	//Add Item Page
+	// Add Item Page
 
 	@GetMapping("/addItem")
 	public String getAddItemPage(Model model) {
-		
-		model.addAttribute("productType" , productTypeService.getAllProductType());
+
+		model.addAttribute("productType", productTypeService.getAllProductType());
 		return "pages/AddItem";
 	}
 
-	
-	//Saving Item in database
+	// Saving Item in database
 	@PostMapping("/addItem")
 	public String saveItem(@ModelAttribute AddItemInput addItemInput) {
-		
+
 		mainStockService.saveItem(addItemInput);
-		
+
 		return "redirect:/admin/addItem";
 	}
-	
+
 	// ADD/List of Product/Size
 	@GetMapping("/addProductAndSize")
 	public String AddproductAndSizePage(Model model) {
-		
-		model.addAttribute("productType" , productTypeService.getAllProductType());
-		
-		model.addAttribute("numericSize" , numericSizeService.getAllNumericSize());
-		
-		model.addAttribute("AlphanumericSize" , alphaNumericSizeService.getAllAlphaNumericSize());
-		
+
+		model.addAttribute("productType", productTypeService.getAllProductType());
+
+		model.addAttribute("numericSize", numericSizeService.getAllNumericSize());
+
+		model.addAttribute("AlphanumericSize", alphaNumericSizeService.getAllAlphaNumericSize());
+
 		return "pages/AddProductAndSize";
 	}
-	
-	//Add Product 
+
+	// Add Product
 	@PostMapping("/addProductType")
 	public String AddProductType(@ModelAttribute ProductType productType) {
-		
+
 		productTypeService.addProductType(productType);
 		return "redirect:/admin/addProductAndSize";
 	}
-	
-	//Add Numeric Size
+
+	// Add Numeric Size
 	@PostMapping("/addNumericSize")
 	public String AddNumericSize(@ModelAttribute NumericSize numericSize) {
-		
+
 		numericSizeService.saveNumericSize(numericSize);
 		return "redirect:/admin/addProductAndSize";
 	}
-	
+
 	// Add Alpha-Numeric Size
 	@PostMapping("/addAlphaNumericSize")
 	public String AddNumericSize(@ModelAttribute AlphaNumericSize alphaNumericSize) {
@@ -125,7 +122,6 @@ public class AdminController {
 		alphaNumericSizeService.saveAlphaNumericSize(alphaNumericSize);
 		return "redirect:/admin/addProductAndSize";
 	}
-	
 
 	@GetMapping("/addCustomer")
 	public String getAddCustomerPage(Model model) {
@@ -185,11 +181,21 @@ public class AdminController {
 		return "pages/CustomerList";
 
 	}
-	
+
 	@GetMapping("/documentType")
 	public String manageDocumentType(Model model) {
-		
+
 		return "redirect:/admin/addCustomer";
 	}
-	
+
+	// to get barcode of each item added
+	@GetMapping("/product")
+	public String product(@RequestParam(name = "sortByproduct_type", defaultValue = "All") String product_type,
+			Model model) {
+
+		List<MainStockDTO> mainStock = mainStockService.getMainStockSortByProductType(product_type);
+
+		model.addAttribute("MainStock", mainStock);
+		return "pages/ProductList";
+	}
 }
