@@ -15,18 +15,28 @@
 			<!-- Add Item Form -->
 			<form th:action="@{/admin/addItem}" th:method="post">
 				<div class="form-row">
-					<!-- Item Name -->
+				
+					<!-- Select Product Type for Upper body -->
 					<div class="form-group col-md-6">
-						<label for="itemName">Item Name</label> <input type="text"
-							class="form-control" id="itemName" name="itemName"
-							placeholder="Enter item name" required>
+						<label for="selectProductTypeUpperBody">Product Type</label> <select
+							class="form-control" id="selectProductTypeUpperBody"
+							name="productType">
+							<option selected disabled>Select Type...</option>
+							<!-- <option th:each="product : ${productType}" th:text="${product.productName}"></option> -->
+							<option>Shirt</option>
+							<option>T-Shirt</option>
+							<option>Jeans</option>
+						</select>
 					</div>
+					
+					
+					
 
 					<!-- Item Code -->
 					<div class="form-group col-md-6">
-						<label for="itemCode">Item Code</label> <input type="text"
-							class="form-control" id="itemCode" name="itemCode"
-							placeholder="Enter item code">
+						<label for="itemCode">Product / Style Number</label> <input type="text"
+							class="form-control" id="itemCode" name="styleNumber"
+							placeholder="Enter Product / Style Number">
 					</div>
 				</div>
 
@@ -69,17 +79,11 @@
 
 				<div class="form-row">
 
-					<!-- Select Product Type for Upper body -->
+					<!-- Item Name -->
 					<div class="form-group col-md-6">
-						<label for="selectProductTypeUpperBody">Product Type</label> <select
-							class="form-control" id="selectProductTypeUpperBody"
-							name="productType">
-							<option selected disabled>Select Type...</option>
-							<!-- <option th:each="product : ${productType}" th:text="${product.productName}"></option> -->
-							<option>Shirt</option>
-							<option>T-Shirt</option>
-							<option>Jeans</option>
-						</select>
+						<label for="itemName">Product Specification</label> <input type="text"
+							class="form-control" id="itemName" name="productSpecification"
+							placeholder="Enter Product Specification" required>
 					</div>
 
 					<!-- Category Name  
