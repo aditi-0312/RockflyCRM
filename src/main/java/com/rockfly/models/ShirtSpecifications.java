@@ -12,13 +12,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ProductType {
+public class ShirtSpecifications {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private String productName;
-	
-	private String sizeType;
+	private String specification;
 }

@@ -22,10 +22,7 @@
 							class="form-control" id="selectProductTypeUpperBody"
 							name="productType">
 							<option selected disabled>Select Type...</option>
-							<!-- <option th:each="product : ${productType}" th:text="${product.productName}"></option> -->
-							<option>Shirt</option>
-							<option>T-Shirt</option>
-							<option>Jeans</option>
+							 <option th:each="product : ${productType}" th:text="${product.productName}"></option>
 						</select>
 					</div>
 					
@@ -59,59 +56,63 @@
 							class="form-control" id="color" name="color"
 							placeholder="Enter color">
 					</div>
-
-
-					<!-- Select Color 
-					<div class="form-group col-md-6">
-						<label for="color">Select Color</label>
-						<select class="form-control" id="color" name="color">
-							<option selected disabled>Select Color...</option>
-							<option>White</option>
-							<option>Green</option>
-							<option>Black</option>
-							<option>Blue</option>
-							<option>Yellow</option>
-						</select>
-					</div> -->
+				
 
 
 				</div>
 
 				<div class="form-row">
 
-					<!-- Item Name -->
+					<!-- Item Name 
 					<div class="form-group col-md-6">
 						<label for="itemName">Product Specification</label> <input type="text"
 							class="form-control" id="itemName" name="productSpecification"
 							placeholder="Enter Product Specification" required>
+					</div> -->
+					
+					
+					<!-- Select Product Specification for T-Shirt -->
+					<div id="TshirtSpecification" class="form-group col-md-6">
+						<label for="ProductSpecification">Select Product Specification</label> 
+						<select class="form-control" id="ProductSpecification" name="productSpecification">
+							<option selected disabled>Select Size...</option>
+							<option th:each="tshirtSpecification : ${tshirtSpecifications}" th:text="${tshirtSpecification.specification}"></option>
+							
+						</select>
+					</div>
+					
+					
+					<!-- Select Product Specification for Shirt -->
+					<div id="shirtSpecification" class="form-group col-md-6" style="display: none;">
+						<label for="ProductSpecification">Select Product Specification</label> 
+						<select class="form-control" id="ProductSpecification" name="productSpecification">
+							<option selected disabled>Select Size...</option>
+							<option th:each="shirtSpecification : ${shirtSpecifications}" th:text="${shirtSpecification.specification}"></option>
+							
+						</select>
+					</div>
+					
+					<!-- Select Product Specification for Jeans -->
+					<div id="JeansSpecification" class="form-group col-md-6" style="display: none;">
+						<label for="ProductSpecification">Select Product Specification</label> 
+						<select class="form-control" id="ProductSpecification" name="productSpecification">
+							<option selected disabled>Select Size...</option>
+							<option>Slim Fit</option>
+							<option>Regular Fit</option>
+							<option>Skinny Fit</option>
+							<option>Straight Fit</option>
+							<option>Loose fit</option>
+						</select>
 					</div>
 
-					<!-- Category Name  
-					<div class="form-group col-md-6">
-						<label for="selectCategory">Select Size</label>
-						<select class="form-control" id="selectCategory">
-							<option>Numeric</option>
-							<option>Alpha Numeric</option>
-						</select>
-					</div>   -->
-
-
+						
 					<!-- Select Numeric Size -->
 					<div id="sizeNumeric" class="form-group col-md-6">
-						<label for="NumericSize">Select Size</label> <select
-							class="form-control" id="NumericSize" name="size">
+						<label for="NumericSize">Select Size</label> 
+						
+						<select class="form-control" id="NumericSize myDropdown" name="size">
 							<option selected disabled>Select Size...</option>
-							<option>28</option>
-							<option>30</option>
-							<option>32</option>
-							<option>34</option>
-							<option>36</option>
-							<option>40</option>
-							<option>42</option>
-							<option>44</option>
-							<option>46</option>
-							<option>48</option>
-							<option>50</option>
+							<option th:each="numericsize : ${numericSize}" th:text="${numericsize.size}"></option>
 						</select>
 					</div>
 
@@ -122,18 +123,7 @@
 						<label for="alphaNumeric">Select Size</label> <select
 							class="form-control" id="alphaNumeric" name="size">
 							<option selected disabled>Select Size...</option>
-							<option>XS (30-32)</option>
-							<option>S (34-36)</option>
-							<option>M (38-40)</option>
-							<option>L (42-44)</option>
-							<option>XL (46-48)</option>
-							<option>2XL (50-52)</option>
-							<option>3XL (54-56)</option>
-							<option>4XL (58-60)</option>
-							<option>5XL (62-64)</option>
-							<option>6XL (66-68)</option>
-							<option>7XL (70-72)</option>
-							<option>8XL (74-76)</option>
+							<option th:each="alphanumericsize : ${AlphanumericSize}" th:text="${alphanumericsize.size}"></option>
 						</select>
 					</div>
 
@@ -202,13 +192,6 @@
 			</form>
 		</div>
 
-
-		<script type="text/javascript">
-	    
-	    
-	
-	    
-	    </script>
 	</section>
 
 </body>

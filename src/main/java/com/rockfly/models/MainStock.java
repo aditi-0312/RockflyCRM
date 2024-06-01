@@ -1,11 +1,14 @@
 package com.rockfly.models;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,4 +43,7 @@ public class MainStock {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "price_id")
 	private Price price;
+	
+	@ManyToMany
+	private List<RackNumber> rackNumber;
 }
