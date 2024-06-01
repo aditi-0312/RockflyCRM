@@ -15,18 +15,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.rockfly.dto.BarcodeDTO;
 import com.rockfly.dto.CustomerDTO;
 import com.rockfly.dto.MainStockDTO;
 import com.rockfly.models.Account;
 import com.rockfly.models.AddItemInput;
 import com.rockfly.models.AlphaNumericSize;
 import com.rockfly.models.Customers;
+
 import com.rockfly.models.JeansSpecifications;
 import com.rockfly.models.NumericSize;
 import com.rockfly.models.ProductType;
 import com.rockfly.models.RackNumber;
 import com.rockfly.models.ShirtSpecifications;
 import com.rockfly.models.TshirtSpecifications;
+
+import com.rockfly.models.DocumentType;
+import com.rockfly.models.NumericSize;
+import com.rockfly.models.ProductType;
+import com.rockfly.repositories.DocumentTypeRepository;
 import com.rockfly.services.AlphaNumericSizeService;
 import com.rockfly.services.CustomerService;
 import com.rockfly.services.JeansSpecificationsService;
@@ -61,6 +68,7 @@ public class AdminController {
 	private MainStockService mainStockService;
 	
 	@Autowired
+
 	private RackNumberService rackNumberService;
 	
 	@Autowired
@@ -71,6 +79,9 @@ public class AdminController {
 	
 	@Autowired
 	private JeansSpecificationsService jeansSpecificationsService;
+
+	private DocumentTypeRepository documentTypeRepository;
+
 
 	@PostMapping("/addEmployee")
 	public String register_accountString(@ModelAttribute Account account) {
@@ -197,6 +208,12 @@ public class AdminController {
 	public String getAddCustomerPage(Model model) {
 		Customers customers = new Customers();
 		model.addAttribute("customers", customers);
+		
+		List<DocumentType> docs=new ArrayList<>();
+		docs.addAll(documentTypeRepository.findAll());
+		model.addAttribute("docs", docs);
+		DocumentType documentType=new DocumentType();
+		model.addAttribute("docType",documentType);
 		return "pages/AddCustomer";
 	}
 
@@ -252,20 +269,20 @@ public class AdminController {
 
 	}
 
-	@GetMapping("/documentType")
-	public String manageDocumentType(Model model) {
-
+	@PostMapping("/documentType")
+	public String manageDocumentType(@ModelAttribute DocumentType docType) {
+		documentTypeRepository.save(docType);
 		return "redirect:/admin/addCustomer";
 	}
 
 	// to get barcode of each item added
-	@GetMapping("/product")
-	public String product(@RequestParam(name = "sortByproduct_type", defaultValue = "All") String product_type,
-			Model model) {
-
-		List<MainStockDTO> mainStock = mainStockService.getMainStockSortByProductType(product_type);
-
-		model.addAttribute("MainStock", mainStock);
-		return "pages/ProductList";
-	}
+//	@GetMapping("/product")
+//	public String product(Model model) {
+//
+//		//List<BarcodeDTO> products = productTypeService;
+//
+//	//	model.addAttribute("MainStock", mainStock);
+//		return "pages/ProductList";
+//	}
+	
 }

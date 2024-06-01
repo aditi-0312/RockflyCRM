@@ -31,9 +31,7 @@ public class Customers {
 	
 	private String phone;
 	
-	private  String billingAddress;
-	
-	private  String shippingAddress;
+	private  String address;
 	
 	private String pincode;
 	

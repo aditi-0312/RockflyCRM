@@ -39,6 +39,8 @@ public class Account {
 	
 	private String address;
 	
+	private String state;
+	
 	private String city;
 	
 	private String pincode;
