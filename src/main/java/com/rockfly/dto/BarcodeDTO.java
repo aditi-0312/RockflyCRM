@@ -16,6 +16,6 @@ public class BarcodeDTO {
 	
 	private String size;
 	
-	private String mrp;
+	private Long mrp;
 	
 }

@@ -12,14 +12,14 @@ import com.rockfly.models.AddItemInput;
 import com.rockfly.models.Customers;
 import com.rockfly.models.Price;
 import com.rockfly.models.MainStock;
-import com.rockfly.repositories.MainStockRepositories;
+import com.rockfly.repositories.MainStockRepository;
 import com.rockfly.services.MainStockService;
 
 @Service
 public class MainStockServiceImpl implements MainStockService{
 
 	@Autowired
-	private MainStockRepositories mainStockRepositories;
+	private MainStockRepository mainStockRepositories;
 	
 	@Override
 	public void saveItem(AddItemInput addItemInput) {

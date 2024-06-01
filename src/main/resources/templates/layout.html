@@ -148,8 +148,8 @@
 									th:href="@{/mainStock}">View/Edit Main Stock</a></li>
 								<li class="nav-item"><a class="nav-link" href="#"
 									th:href="@{/salesStock}">View/Edit sales Stock</a></li>
-									<li class="nav-item"><a class="nav-link" href="#"
-									th:href="@{/admin/product}">Bar Code</a></li>
+								<!-- <li class="nav-item"><a class="nav-link" href="#"
+									th:href="@{/admin/product}">Bar Code</a></li> -->
 							</ul>
 
 						</div></li>
@@ -277,6 +277,12 @@
 	<script th:src="@{/js/misc.js}"></script>
 	<script th:src="@{/js/dashboard.js}"></script>
 	<script th:src="@{/js/addItem.js}"></script>
+	<!-- script to add dynamic dropdown for cities and states -->
+	<script th:src="@{/js/cities.js}"></script>
+	<script language="javascript">print_state("state");</script>
+	<script language="javascript">print_city("city");</script>
+	<!-- script ends -->
+
 
 	<script src="https://code.jquery.com/jquery-3.7.1.js"
 		integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
