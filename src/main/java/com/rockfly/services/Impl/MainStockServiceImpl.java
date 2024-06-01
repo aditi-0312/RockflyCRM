@@ -11,8 +11,10 @@ import com.rockfly.dto.MainStockDTO;
 import com.rockfly.models.AddItemInput;
 import com.rockfly.models.Customers;
 import com.rockfly.models.Price;
+import com.rockfly.models.RackNumber;
 import com.rockfly.models.MainStock;
 import com.rockfly.repositories.MainStockRepositories;
+import com.rockfly.repositories.RackNumberRepository;
 import com.rockfly.services.MainStockService;
 
 @Service
@@ -20,6 +22,9 @@ public class MainStockServiceImpl implements MainStockService{
 
 	@Autowired
 	private MainStockRepositories mainStockRepositories;
+	
+	@Autowired
+	private RackNumberRepository rackNumberRepository;
 	
 	@Override
 	public void saveItem(AddItemInput addItemInput) {
@@ -45,29 +50,7 @@ public class MainStockServiceImpl implements MainStockService{
 			
 			mainStockRepositories.save(shirtMainStock);
 		
-	}
-
-	/*
-	 * @Override public List<MainStock> getMainStockSortByProductType(String
-	 * productType) {
-	 * 
-	 * if (productType.equals("Jeans")) {
-	 * 
-	 * return mainStockRepositories.findByProductType(productType); }else if
-	 * (productType.equals("Shirt")) {
-	 * 
-	 * return mainStockRepositories.findByProductType(productType);
-	 * 
-	 * }else if (productType.equals("T-Shirt")) { return
-	 * mainStockRepositories.findByProductType(productType); }else if
-	 * (productType.equals("Jacket")) { return
-	 * mainStockRepositories.findByProductType(productType); }
-	 * 
-	 * return mainStockRepositories.findAll();
-	 * 
-	 * 
-	 * }
-	 */
+	}	
 	
 	
 	@Override
@@ -93,6 +76,36 @@ public class MainStockServiceImpl implements MainStockService{
 		return new MainStockDTO(mainStock.getId(), mainStock.getProductType(), mainStock.getStyleNumber(), mainStock.getItemHsnSac(),
 				mainStock.getColor(), mainStock.getProductSpecification(), mainStock.getSize(), mainStock.getQuantity(),
 				mainStock.getPrice());
+	}
+
+	@Override
+	public MainStock getMainStockProductDetailById(Long id) {
+		MainStock mainStockProductDetail = mainStockRepositories.findById(id).get();
+		return mainStockProductDetail;
+	}
+
+
+	@Override
+	public void setRackNumber(Long id, RackNumber rackNumber) {
+		MainStock mainStock = getMainStockProductDetailById(id);
+		
+		RackNumber rackNumber2  = rackNumberRepository.findById(rackNumber.getId()).get();
+		
+		List<RackNumber> rack = mainStock.getRackNumber();
+		rack.add(rackNumber2);
+		
+		List<MainStock> mainStocks = rackNumber2.getMainStock();
+		mainStocks.add(mainStock);
+		mainStockRepositories.save(mainStock);
+	}
+
+
+	@Override
+	public List<RackNumber> getRackNumberByMainStockId(Long id) {
+		MainStock mainStock = getMainStockProductDetailById(id);
+		
+		List<RackNumber> rackNumbers = mainStock.getRackNumber();		
+		return rackNumbers;
 	}
 
 
