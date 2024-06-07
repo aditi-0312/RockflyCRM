@@ -20,29 +20,23 @@ import com.rockfly.dto.CustomerDTO;
 import com.rockfly.dto.MainStockDTO;
 import com.rockfly.models.Account;
 import com.rockfly.models.AddItemInput;
-import com.rockfly.models.AlphaNumericSize;
 import com.rockfly.models.Customers;
 
-import com.rockfly.models.JeansSpecifications;
-import com.rockfly.models.NumericSize;
+import com.rockfly.models.ProductSpecifications;
+import com.rockfly.models.Size;
 import com.rockfly.models.ProductType;
 import com.rockfly.models.RackNumber;
-import com.rockfly.models.ShirtSpecifications;
-import com.rockfly.models.TshirtSpecifications;
 
 import com.rockfly.models.DocumentType;
-import com.rockfly.models.NumericSize;
+import com.rockfly.models.Size;
 import com.rockfly.models.ProductType;
 import com.rockfly.repositories.DocumentTypeRepository;
-import com.rockfly.services.AlphaNumericSizeService;
 import com.rockfly.services.CustomerService;
 import com.rockfly.services.JeansSpecificationsService;
 import com.rockfly.services.MainStockService;
-import com.rockfly.services.NumericSizeService;
+import com.rockfly.services.SizeService;
 import com.rockfly.services.ProductTypeService;
 import com.rockfly.services.RackNumberService;
-import com.rockfly.services.ShirtSpecificationsService;
-import com.rockfly.services.TshirtSpecificationService;
 import com.rockfly.services.Impl.AccountServiceImpl;
 
 @Controller
@@ -59,23 +53,13 @@ public class AdminController {
 	private ProductTypeService productTypeService;
 
 	@Autowired
-	private NumericSizeService numericSizeService;
-
-	@Autowired
-	private AlphaNumericSizeService alphaNumericSizeService;
+	private SizeService sizeService;
 
 	@Autowired
 	private MainStockService mainStockService;
 	
 	@Autowired
-
 	private RackNumberService rackNumberService;
-	
-	@Autowired
-	private TshirtSpecificationService tshirtSpecificationService;
-	
-	@Autowired
-	private ShirtSpecificationsService shirtSpecificationsService;
 	
 	@Autowired
 	private JeansSpecificationsService jeansSpecificationsService;
@@ -98,19 +82,13 @@ public class AdminController {
 	}
 
 	// Add Item Page
-
 	@GetMapping("/addItem")
 	public String getAddItemPage(Model model) {
 
 		model.addAttribute("productType", productTypeService.getAllProductType());
 		
-		model.addAttribute("numericSize", numericSizeService.getAllNumericSize());
+		model.addAttribute("Sizes", sizeService.getAllSize());
 
-		model.addAttribute("AlphanumericSize", alphaNumericSizeService.getAllAlphaNumericSize());
-		
-		model.addAttribute("tshirtSpecifications", tshirtSpecificationService.getAllTshirtSpecifications());
-		
-		model.addAttribute("shirtSpecifications", shirtSpecificationsService.getAllShirtSpecifications());
 		return "pages/AddItem";
 	}
 
@@ -129,9 +107,7 @@ public class AdminController {
 
 		model.addAttribute("productType", productTypeService.getAllProductType());
 
-		model.addAttribute("numericSize", numericSizeService.getAllNumericSize());
-
-		model.addAttribute("AlphanumericSize", alphaNumericSizeService.getAllAlphaNumericSize());
+		model.addAttribute("numericSize", sizeService.getAllSize());
 
 		return "pages/AddProductAndSize";
 	}
@@ -151,32 +127,13 @@ public class AdminController {
 		
 		model.addAttribute("RackNumbers",rackNumberService.getAllRackNumbers());
 		
-		model.addAttribute("tshirtSpecifications", tshirtSpecificationService.getAllTshirtSpecifications());
-		
-		model.addAttribute("shirtSpecifications", shirtSpecificationsService.getAllShirtSpecifications());
-		
 		return "pages/AddSpecificationsAndRackNumber";
 	}
 	
-	//saving T-shirt SpecificationService
-	@PostMapping("/saveTshirtSpecificationRepository")
-	public String savetshirtSpecificationRepository(@ModelAttribute TshirtSpecifications tshirtSpecifications) {
+	//saving Specifications 
+	public String saveSpecifications(@ModelAttribute ProductSpecifications productSpecifications) {
 		
-		tshirtSpecificationService.saveTshirtSpecificationService(tshirtSpecifications);
-		return "redirect:/admin/addSpecificationsAndRackNumber";
-	}
-	
-	//Saving Shirt Specifications
-	@PostMapping("/saveShirtSpecification")
-	public String saveShirtSpecifications(@ModelAttribute ShirtSpecifications shirtSpecifications) {
-		shirtSpecificationsService.saveShirtSpecifications(shirtSpecifications);
-		return "redirect:/admin/addSpecificationsAndRackNumber";
-	}
-	
-	//saving Jeans Specifications 
-	public String saveJeansSpecifications(@ModelAttribute JeansSpecifications jeansSpecifications) {
-		
-		jeansSpecificationsService.saveJeansSpecifications(jeansSpecifications);
+		jeansSpecificationsService.saveJeansSpecifications(productSpecifications);
 		
 		return "redirect:/admin/addSpecificationsAndRackNumber";
 	}
@@ -190,17 +147,11 @@ public class AdminController {
 	
 	  // Add Numeric Size
 	  @PostMapping("/addNumericSize")
-	  public String AddNumericSize(@ModelAttribute NumericSize numericSize) {
+	  public String AddNumericSize(@ModelAttribute Size size) {
 	  
-	  numericSizeService.saveNumericSize(numericSize); 
-	  return "redirect:/admin/addProductAndSize"; }
+		  sizeService.saveSize(size); 
+		  return "redirect:/admin/addProductAndSize"; 
 	  
-	  // Add Alpha-Numeric Size 
-	  @PostMapping("/addAlphaNumericSize") 
-	  public String AddNumericSize(@ModelAttribute AlphaNumericSize alphaNumericSize) {
-	  
-	  alphaNumericSizeService.saveAlphaNumericSize(alphaNumericSize); 
-	  return "redirect:/admin/addProductAndSize"; 
 	  }
 	 
 

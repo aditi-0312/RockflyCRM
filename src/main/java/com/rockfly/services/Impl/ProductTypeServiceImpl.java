@@ -20,7 +20,6 @@ import com.rockfly.dto.BarcodeDTO;
 import com.rockfly.dto.CustomerDTO;
 import com.rockfly.models.Customers;
 import com.rockfly.models.MainStock;
-import com.rockfly.models.Price;
 import com.rockfly.models.ProductType;
 import com.rockfly.repositories.MainStockRepository;
 import com.rockfly.repositories.ProductTypeRepository;

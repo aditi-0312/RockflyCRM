@@ -1,7 +1,5 @@
 package com.rockfly.dto;
 
-import com.rockfly.models.Price;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,5 +27,5 @@ public class MainStockDTO {
 	// Quantity
 	private String quantity;
 	
-	private Price price;
+	
 }

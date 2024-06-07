@@ -2,11 +2,11 @@ package com.rockfly.services;
 
 import java.util.List;
 
-import com.rockfly.models.JeansSpecifications;
+import com.rockfly.models.ProductSpecifications;
 
 public interface JeansSpecificationsService {
 
-	public void saveJeansSpecifications(JeansSpecifications jeansSpecifications);
+	public void saveJeansSpecifications(ProductSpecifications productSpecifications);
 	
-	public List<JeansSpecifications> getAllJeansSpecifications();
+	public List<ProductSpecifications> getAllJeansSpecifications();
 }
