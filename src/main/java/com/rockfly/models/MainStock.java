@@ -1,6 +1,9 @@
 package com.rockfly.models;
 
+import java.util.Date;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -48,4 +51,7 @@ public class MainStock {
 	
 	@ManyToMany(cascade = CascadeType.DETACH)
 	private List<RackNumber> rackNumber; 
+	
+	@CreationTimestamp
+	private Date timeStamp;
 }

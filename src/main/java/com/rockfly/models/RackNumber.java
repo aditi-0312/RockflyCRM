@@ -1,6 +1,9 @@
 package com.rockfly.models;
 
+import java.util.Date;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +25,9 @@ public class RackNumber {
 	private Long id;
 	
 	private String rack;
+	
+	@CreationTimestamp
+	private Date timeStamp;
 	
 	@ManyToMany(mappedBy = "rackNumber")
 	private List<MainStock> mainStock;

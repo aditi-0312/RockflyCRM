@@ -1,6 +1,9 @@
 package com.rockfly.models;
 
 import java.time.LocalDate;
+import java.util.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -46,6 +49,11 @@ public class Customers {
 	private LocalDate asOfDate;
 	
 	private Long creditLimit;
+	
+	@CreationTimestamp
+	private Date timeStamp;
+	
+	private Integer status = 0;
 	
 	@OneToOne
 	private DocumentType documentType;
