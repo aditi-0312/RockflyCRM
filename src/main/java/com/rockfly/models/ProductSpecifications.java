@@ -1,5 +1,9 @@
 package com.rockfly.models;
 
+import java.util.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,4 +33,7 @@ public class ProductSpecifications {
 	@ManyToOne
 	@JoinColumn(name = "productType_id")
 	private ProductType productType;
+	
+	@CreationTimestamp
+	private Date timeStamp;
 }

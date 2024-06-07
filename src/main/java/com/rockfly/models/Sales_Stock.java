@@ -1,5 +1,9 @@
 package com.rockfly.models;
 
+import java.util.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,5 +21,8 @@ public class Sales_Stock {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	@CreationTimestamp
+	private Date timeStamp;
 
 }

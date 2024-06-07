@@ -1,5 +1,9 @@
 package com.rockfly.models;
 
+import java.util.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,5 +25,8 @@ public class DocumentType {
 	private Long id;
 	
 	private String type;
+	
+	@CreationTimestamp
+	private Date timeStamp;
 
 }
