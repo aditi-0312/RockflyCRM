@@ -10,7 +10,6 @@ import com.rockfly.dto.CustomerDTO;
 import com.rockfly.dto.MainStockDTO;
 import com.rockfly.models.AddItemInput;
 import com.rockfly.models.Customers;
-import com.rockfly.models.Price;
 import com.rockfly.models.RackNumber;
 import com.rockfly.models.MainStock;
 
@@ -32,54 +31,49 @@ public class MainStockServiceImpl implements MainStockService{
 	@Override
 	public void saveItem(AddItemInput addItemInput) {
 			
-			MainStock shirtMainStock = new MainStock();
-			shirtMainStock.setProductSpecification(addItemInput.getProductSpecification());
-			shirtMainStock.setStyleNumber(addItemInput.getStyleNumber());
-			shirtMainStock.setItemHsnSac(addItemInput.getItemHsnSac());
-			shirtMainStock.setColor(addItemInput.getColor());
-			shirtMainStock.setProductType(addItemInput.getProductType());
-			shirtMainStock.setSize(addItemInput.getSize());
-			shirtMainStock.setQuantity(addItemInput.getQuantity());
+//			MainStock shirtMainStock = new MainStock();
+//			shirtMainStock.setProductSpecification(addItemInput.getProductSpecification());
+//			shirtMainStock.setStyleNumber(addItemInput.getStyleNumber());
+//			shirtMainStock.setItemHsnSac(addItemInput.getItemHsnSac());
+//			shirtMainStock.setColor(addItemInput.getColor());
+//			shirtMainStock.setProductType(addItemInput.getProductType());
+//			shirtMainStock.setSize(addItemInput.getSize());
+//			shirtMainStock.setQuantity(addItemInput.getQuantity());
 			
-			
-			Price price = new Price();
-			price.setMrp(addItemInput.getMrp());
-			price.setSalePrice(addItemInput.getSalePrice());
-			price.setWholesalePrice(addItemInput.getWholesalePrice());
-			price.setPurchasePrice(addItemInput.getPurchasePrice());
-			price.setShirtMainStock(shirtMainStock);
-			
-			shirtMainStock.setPrice(price);
-			
-			mainStockRepositories.save(shirtMainStock);
+//			mainStockRepositories.save(shirtMainStock);
 		
 	}	
 	
 	
 	@Override
 	public List<MainStockDTO> getMainStockSortByProductType(String productType) {
-		
-		if (productType.equals("All")) {
-			
-			  List<MainStock> mainStock = mainStockRepositories.findAll();
-			  
-			  return mainStock.stream() .map(this::fromEntityToDTO)
-			  .collect(Collectors.toList());
-			 
-		}
-			List<MainStock> mainStockByProductType = mainStockRepositories.findByProductType(productType);
-			return mainStockByProductType.stream()
-					.map(this::fromEntityToDTO)
-					.collect(Collectors.toList());
-			
+		return null;
 	}
 	
-	
-	public MainStockDTO fromEntityToDTO(MainStock mainStock) {
-		return new MainStockDTO(mainStock.getId(), mainStock.getProductType(), mainStock.getStyleNumber(), mainStock.getItemHsnSac(),
-				mainStock.getColor(), mainStock.getProductSpecification(), mainStock.getSize(), mainStock.getQuantity(),
-				mainStock.getPrice());
-	}
+//	@Override
+//	public List<MainStockDTO> getMainStockSortByProductType(String productType) {
+//		
+//		if (productType.equals("All")) {
+//			
+//			  List<MainStock> mainStock = mainStockRepositories.findAll();
+//			  
+//			  return mainStock.stream() .map(this::fromEntityToDTO)
+//			  .collect(Collectors.toList());
+//			 
+//		}
+//			List<MainStock> mainStockByProductType = mainStockRepositories.findByProductType(productType);
+//			return mainStockByProductType.stream()
+//					.map(this::fromEntityToDTO)
+//					.collect(Collectors.toList());
+//			
+//	}
+//	
+//	
+//	public MainStockDTO fromEntityToDTO(MainStock mainStock) {
+//		return new MainStockDTO(mainStock.getId(), mainStock.getProductType(), mainStock.getStyleNumber(), mainStock.getItemHsnSac(),
+//				mainStock.getColor(), mainStock.getProductSpecification(), mainStock.getSize(), mainStock.getQuantity(),
+//				mainStock.getPrice());
+//	}
 
 	@Override
 	public MainStock getMainStockProductDetailById(Long id) {

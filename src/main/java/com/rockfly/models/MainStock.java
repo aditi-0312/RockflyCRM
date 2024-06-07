@@ -24,7 +24,9 @@ public class MainStock {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private String productType;
+	@OneToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "productTypeId")
+	private ProductType productType;
 	
 	private String styleNumber;
 	
@@ -32,18 +34,18 @@ public class MainStock {
 	
 	private String color;
 	
-	private String productSpecification;	
+	@OneToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "productSpecifications_id")
+	private ProductSpecifications productSpecifications;	
 	
 	//Size
-	private String size;	
+	@OneToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "size_id")
+	private Size size;	
 	
 	//Quantity
 	private String quantity;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "price_id")
-	private Price price;
-	
-	@ManyToMany
-	private List<RackNumber> rackNumber;
+	@ManyToMany(cascade = CascadeType.DETACH)
+	private List<RackNumber> rackNumber; 
 }
