@@ -1,5 +1,4 @@
 package com.rockfly.controller;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rockfly.dto.BarcodeDTO;
 import com.rockfly.dto.CustomerDTO;
@@ -33,6 +34,7 @@ import com.rockfly.models.TshirtSpecifications;
 import com.rockfly.models.DocumentType;
 import com.rockfly.models.NumericSize;
 import com.rockfly.models.ProductType;
+import com.rockfly.repositories.CustomersRepository;
 import com.rockfly.repositories.DocumentTypeRepository;
 import com.rockfly.services.AlphaNumericSizeService;
 import com.rockfly.services.CustomerService;
@@ -80,14 +82,12 @@ public class AdminController {
 	@Autowired
 	private JeansSpecificationsService jeansSpecificationsService;
 
+	@Autowired
 	private DocumentTypeRepository documentTypeRepository;
+	
+	@Autowired
+	private CustomersRepository customersRepository;
 
-
-	@PostMapping("/addEmployee")
-	public String register_accountString(@ModelAttribute Account account) {
-		accountService.save(account);
-		return "redirect:/";
-	}
 
 	@GetMapping("/addEmployee")
 	public String getAddEmployeePage(Model model) {
@@ -95,6 +95,21 @@ public class AdminController {
 		model.addAttribute("account", account);
 		return "pages/AddEmployee";
 
+	}
+	
+	@PostMapping("/addEmployee")
+	public String register_accountString(@ModelAttribute Account account,RedirectAttributes attributes) {
+		try {
+			accountService.save(account);
+			attributes.addFlashAttribute("message","Employee added successfully");
+			return "redirect:/admin/addEmployee";
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return "redirect:/admin/addEmployee";
+
+		}
+		
 	}
 
 	// Add Item Page
@@ -218,11 +233,17 @@ public class AdminController {
 	}
 
 	@PostMapping("/addCustomer")
-	public String addCustomer(@ModelAttribute Customers customers) {
-		System.out.println(customers.getName());
-		customerServices.save(customers);
-		return "redirect:/";
-
+	public String addCustomer(@ModelAttribute Customers customers,RedirectAttributes attributes) {
+		System.out.println(customers.getShopName());
+		try {
+			customerServices.save(customers);
+			attributes.addFlashAttribute("message","Customer added successfully");
+			return "redirect:/admin/addCustomer";
+		} catch (Exception e) {
+			System.out.println(e);
+			return "redirect:/admin/addCustomer";
+		}
+	
 	}
 
 //	@ResponseBody
@@ -267,6 +288,14 @@ public class AdminController {
 		model.addAttribute("customers", customers_on_page);
 		return "pages/CustomerList";
 
+	}
+	
+	//display customers having specific id from the search bar
+	@GetMapping("/customer/{id}")
+	public String getCustomer(@PathVariable("id") Long id, Model model) {
+		
+		model.addAttribute("customer", customersRepository.findById(id).get());
+		return "pages/Customer";
 	}
 
 	@PostMapping("/documentType")

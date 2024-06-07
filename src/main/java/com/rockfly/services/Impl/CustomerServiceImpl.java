@@ -55,6 +55,6 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public CustomerDTO fromEntityToDTO(Customers customers) {
-		return new CustomerDTO(customers.getName(), customers.getOpeningBalance(), customers.getAsOfDate());
+		return new CustomerDTO(customers.getShopName(), customers.getOpeningBalance(), customers.getAsOfDate());
 	}
 }

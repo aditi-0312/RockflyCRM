@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CustomerDTO {
 
-	private String name;
+	private String shopName;
 	
 	private Long openingBalance;
 	

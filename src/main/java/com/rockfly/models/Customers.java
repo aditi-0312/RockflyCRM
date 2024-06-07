@@ -21,7 +21,11 @@ public class Customers {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private String name;
+	private String shopName;
+	
+	private String partyName;
+	
+	private String contactPerson;
 	
 	private String email;
 	

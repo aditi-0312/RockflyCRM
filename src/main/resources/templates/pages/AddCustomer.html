@@ -11,6 +11,8 @@
 <body>
 
 	<section class="content-wrapper">
+		<p th:text="${message}" th:if="${message ne null}"
+			class="alert alert-primary"></p>
 		<div class="d-flex justify-content-center">
 			<div class="container shadow-sm border rounded mt-4 mb-4 bg-white">
 				<h2 class="blue-underline mt-4 mb-4 col-md-12 text-colour">Add
@@ -21,12 +23,26 @@
 					th:object="${customers}" method="post">
 					<div class="form-row mt-5">
 						<!-- Employee Name -->
+
 						<div class="form-group col-md-6">
-							<label for="customerName">Customer Name</label> <input
-								type="text" name="name" class="form-control" id="customerName"
-								placeholder="Enter Customer Name">
+							<label for="shopName">Shop Name</label> <input
+								type="text" name="shopName" class="form-control" id="shopName"
+								placeholder="Enter Shop Name">
 						</div>
 
+						<div class="form-group col-md-6">
+							<label for="partyName">Party Name</label> <input
+								type="text" name="partyName" class="form-control" id="partyName"
+								placeholder="Enter Party Name">
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="customerName">Contact Person</label> 
+							<select class="form-control" name="contactPerson">
+							<option>Owner</option>
+							<option>Employee</option>
+							</select>
+						</div>
 						<!-- Phone Number -->
 						<div class="form-group col-md-6">
 							<label for="phoneNumber">Phone Number</label> <input type="text"
