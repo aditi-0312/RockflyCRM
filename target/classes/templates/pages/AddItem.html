@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="layout::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<section class="content-wrapper">
+		<div class="container shadow-sm border rounded mt-4 mb-4 bg-white">
+
+			<h2 class="blue-underline mt-4 mb-4 col-md-12 text-colour">Add Item</h2>
+
+			<!-- Add Item Form -->
+			<form th:action="@{/admin/addItem}" th:method="post">
+				<div class="form-row">
+				
+					<!-- Select Product Type for Upper body -->
+					<div class="form-group col-md-6">
+						<label for="selectProductTypeUpperBody">Product Type</label> <select
+							class="form-control" id="selectProductTypeUpperBody"
+							name="productType">
+							<option selected disabled>Select Type...</option>
+							 <option th:each="product : ${productType}" th:text="${product.productName}"></option>
+						</select>
+					</div>
+					
+					
+					
+
+					<!-- Item Code -->
+					<div class="form-group col-md-6">
+						<label for="itemCode">Product / Style Number</label> <input type="text"
+							class="form-control" id="itemCode" name="styleNumber"
+							placeholder="Enter Product / Style Number">
+					</div>
+				</div>
+
+
+				<!-- Select Category -->
+				<div class="form-row">
+
+
+					<!-- Item HSN / SAC -->
+					<div class="form-group col-md-6">
+						<label for="itemCode">Item HSN / SAC</label> <input type="text"
+							class="form-control" id="itemCode" name="itemHsnSac"
+							placeholder="Item HSN / SAC">
+					</div>
+
+
+					<!-- Color -->
+					<div class="form-group col-md-6">
+						<label for="color">Color</label> <input type="text"
+							class="form-control" id="color" name="color"
+							placeholder="Enter color">
+					</div>
+				
+
+
+				</div>
+
+				<div class="form-row">
+
+					<!-- Item Name 
+					<div class="form-group col-md-6">
+						<label for="itemName">Product Specification</label> <input type="text"
+							class="form-control" id="itemName" name="productSpecification"
+							placeholder="Enter Product Specification" required>
+					</div> -->
+					
+					
+					<!-- Select Product Specification for T-Shirt -->
+					<div id="TshirtSpecification" class="form-group col-md-6">
+						<label for="ProductSpecification">Select Product Specification</label> 
+						<select class="form-control" id="ProductSpecification" name="productSpecification">
+							<option selected disabled>Select Size...</option>
+							<option th:each="tshirtSpecification : ${tshirtSpecifications}" th:text="${tshirtSpecification.specification}"></option>
+							
+						</select>
+					</div>
+					
+					
+					<!-- Select Product Specification for Shirt -->
+					<div id="shirtSpecification" class="form-group col-md-6" style="display: none;">
+						<label for="ProductSpecification">Select Product Specification</label> 
+						<select class="form-control" id="ProductSpecification" name="productSpecification">
+							<option selected disabled>Select Size...</option>
+							<option th:each="shirtSpecification : ${shirtSpecifications}" th:text="${shirtSpecification.specification}"></option>
+							
+						</select>
+					</div>
+					
+					<!-- Select Product Specification for Jeans -->
+					<div id="JeansSpecification" class="form-group col-md-6" style="display: none;">
+						<label for="ProductSpecification">Select Product Specification</label> 
+						<select class="form-control" id="ProductSpecification" name="productSpecification">
+							<option selected disabled>Select Size...</option>
+							<option>Slim Fit</option>
+							<option>Regular Fit</option>
+							<option>Skinny Fit</option>
+							<option>Straight Fit</option>
+							<option>Loose fit</option>
+						</select>
+					</div>
+
+						
+					<!-- Select Numeric Size -->
+					<div id="sizeNumeric" class="form-group col-md-6">
+						<label for="NumericSize">Select Size</label> 
+						
+						<select class="form-control" id="NumericSize myDropdown" name="size">
+							<option selected disabled>Select Size...</option>
+							<option th:each="numericsize : ${numericSize}" th:text="${numericsize.size}"></option>
+						</select>
+					</div>
+
+
+					<!-- Select Alpha Numeric Size -->
+					<div id="sizeAlphaNumeric" class="form-group col-md-6"
+						style="display: none;">
+						<label for="alphaNumeric">Select Size</label> <select
+							class="form-control" id="alphaNumeric" name="size">
+							<option selected disabled>Select Size...</option>
+							<option th:each="alphanumericsize : ${AlphanumericSize}" th:text="${alphanumericsize.size}"></option>
+						</select>
+					</div>
+
+
+				</div>
+				
+				
+				
+				<!-- Quantity  -->
+				<div class="form-row">
+				
+					<!-- Color -->
+					<div class="form-group col-md-6">
+						<label for="quantity">Quantity</label> <input type="text"
+							class="form-control" id="quantity" name="quantity"
+							placeholder="Enter Quantity">
+					</div>
+
+				</div>
+				
+				
+
+				<h4 class="blue-underline mt-4 mb-4 col-md-2 text-colour">PRICING</h4>
+
+				<div class="form-row">
+
+					<!-- Pricing Section -->
+					<div class="form-group col-md-6">
+						<label for="itemMRP">MRP (Maximum Retail Price)</label> <input
+							type="text" class="form-control" id="itemMRP" name="mrp"
+							placeholder="Enter MRP" required>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="itemSalePrice">Sale Price</label> <input type="text"
+							class="form-control" id="itemSalePrice" name="salePrice"
+							placeholder="Enter sale price" required>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="itemWholesalePrice">Wholesale Price</label> <input
+							type="text" class="form-control" id="itemWholesalePrice"
+							name="wholesalePrice" placeholder="Enter wholesale price"
+							required>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="itemPurchasePrice">Purchase Price</label> <input
+							type="text" class="form-control" id="itemPurchasePrice"
+							name="purchasePrice" placeholder="Enter wholesale price"
+							required>
+					</div>
+					
+					<!-- <div class="form-group col-md-6">
+						<label for="itemTaxRate">Tax Rate</label> <input
+							type="text" class="form-control" id="itemTaxRate"
+							name="purchase_price" placeholder="Enter Tax Rate"
+							required>
+					</div> -->
+				</div>
+
+
+				<div class=" text-center border-top mt-4">
+					<button type="submit" class="btn btn-success mb-4 mt-4 col-4">Add Item</button>
+				</div>
+			</form>
+		</div>
+
+	</section>
+
+</body>
+</html>
