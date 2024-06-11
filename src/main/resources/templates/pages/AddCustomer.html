@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org "
+<html xmlns:th="http://www.thymeleaf.org"
 	th:replace="layout::layout(~{::section})">
 
 <head>
@@ -161,9 +161,8 @@
 								required>
 						</div> -->
 						<div class="form-group col-md-12">
-							<label for="state">State</label> <select
-								onchange="print_city('city', this.selectedIndex);" id="state"
-								name="state" class="form-control" required></select>
+							<label for="state">State</label> 
+							<select onchange="print_city('city', this.selectedIndex);" id="state" name="state" class="form-control" required></select>
 						</div>
 
 						<div class="form-group col-md-12">

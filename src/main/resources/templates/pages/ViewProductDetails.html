@@ -73,7 +73,7 @@
 					<!-- Item Name -->
 					<div class="form-group col-md-6">
 						<label for="itemName">Product Type</label> 
-						<input type="text" class="form-control" id="itemName" name="itemName" placeholder="Enter item name" th:value="${MainStockProduct.productType}" required>
+						<input type="text" class="form-control" id="itemName" name="itemName" placeholder="Enter item name" th:value="${MainStockProduct.productType.productName}" required>
 					</div>
 
 					<!-- Item Code -->
@@ -112,7 +112,7 @@
 						<label for="selectProductTypeUpperBody">Product Specification</label> <select
 							class="form-control" id="selectProductTypeUpperBody"
 							name="productType">
-							<option th:text="${MainStockProduct.productSpecification}"></option>
+							<option th:text="${MainStockProduct.productSpecifications.specification}"></option>
 							
 						</select>
 					</div>
@@ -122,7 +122,7 @@
 					<div id="sizeNumeric" class="form-group col-md-6">
 						<label for="NumericSize">Select Size</label> <select
 							class="form-control" id="NumericSize" name="size">
-							<option th:text="${MainStockProduct.size}">Select Size...</option>
+							<option th:text="${MainStockProduct.sizes.sizes}">Select Size...</option>
 							
 						</select>
 					</div>
@@ -153,26 +153,26 @@
 					<div class="form-group col-md-6">
 						<label for="itemMRP">MRP (Maximum Retail Price)</label> <input
 							type="text" class="form-control" id="itemMRP" name="mrp"
-							placeholder="Enter MRP" th:value="${MainStockProduct.price.mrp}" required>
+							placeholder="Enter MRP" th:value="${MainStockProduct.mrp}" required>
 					</div>
 
 					<div class="form-group col-md-6">
 						<label for="itemSalePrice">Sale Price</label> <input type="text"
 							class="form-control" id="itemSalePrice" name="salePrice"
-							placeholder="Enter sale price" th:value="${MainStockProduct.price.salePrice}" required>
+							placeholder="Enter sale price" th:value="${MainStockProduct.salePrice}" required>
 					</div>
 
 					<div class="form-group col-md-6">
 						<label for="itemWholesalePrice">Wholesale Price</label> <input
 							type="text" class="form-control" id="itemWholesalePrice"
-							name="wholesalePrice" placeholder="Enter wholesale price" th:value="${MainStockProduct.price.wholesalePrice}"
+							name="wholesalePrice" placeholder="Enter wholesale price" th:value="${MainStockProduct.wholesalePrice}"
 							required>
 					</div>
 
 					<div class="form-group col-md-6">
 						<label for="itemPurchasePrice">Purchase Price</label> <input
 							type="text" class="form-control" id="itemPurchasePrice"
-							name="purchasePrice" placeholder="Enter wholesale price" th:value="${MainStockProduct.price.purchasePrice}"
+							name="purchasePrice" placeholder="Enter wholesale price" th:value="${MainStockProduct.purchasePrice}"
 							required>
 					</div>
 					

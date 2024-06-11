@@ -34,7 +34,7 @@ public class AccountController {
 	@GetMapping("/mainStock")
 	public String getMainStockList(@RequestParam(name = "sortByproduct_type", defaultValue = "All") String product_type, Model model) {
 		
-	List<MainStockDTO> mainStock = mainStockService.getMainStockSortByProductType(product_type);
+	List<MainStock> mainStock = mainStockService.getMainStockSortByProductType(product_type);
 		
 		model.addAttribute("MainStock" , mainStock);
 		

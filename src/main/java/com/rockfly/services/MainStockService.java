@@ -11,9 +11,11 @@ import lombok.val;
 
 public interface MainStockService {
 	
-	public void saveItem(AddItemInput addItemInput);
+	public void saveItem(MainStock mainStock);
 	
-	public List<MainStockDTO> getMainStockSortByProductType(String productType);
+	//public List<MainStockDTO> getMainStockSortByProductType(String productType);
+	
+	public List<MainStock> getMainStockSortByProductType(String productType);
 	
 	public MainStock getMainStockProductDetailById(Long id);
 	

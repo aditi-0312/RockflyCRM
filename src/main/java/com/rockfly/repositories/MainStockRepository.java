@@ -8,5 +8,5 @@ import com.rockfly.models.MainStock;
 
 public interface MainStockRepository extends JpaRepository<MainStock, Long>{
 
-//	List<MainStock> findByProductType(String productType);
+	//List<MainStock> findByproductType(String productType);
 }

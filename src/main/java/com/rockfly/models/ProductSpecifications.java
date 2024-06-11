@@ -1,8 +1,11 @@
 package com.rockfly.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,11 +30,13 @@ public class ProductSpecifications {
 	
 	private String specification;
 	
-	@OneToOne(mappedBy = "productSpecifications")
-	private MainStock mainStock;
+	@OneToMany(mappedBy = "productSpecifications")
+	@JsonIgnore
+	private List<MainStock> mainStock;
 	
 	@ManyToOne
 	@JoinColumn(name = "productType_id")
+	@JsonIgnore
 	private ProductType productType;
 	
 	@CreationTimestamp
