@@ -5,11 +5,14 @@ import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -55,7 +58,9 @@ public class Customers {
 	
 	private Integer status = 0;
 	
-	@OneToOne
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="documentType")
 	private DocumentType documentType;
 	
 	

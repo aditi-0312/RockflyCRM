@@ -23,7 +23,7 @@ public class SearchController {
 	public ResponseEntity<?> search(@PathVariable("query") String query) {
 		
 		System.out.println(query);
-		List<Customers> customers=this.customersRepository.findByShopNameContaining(query);
+		List<Customers> customers=this.customersRepository.findByPartyNameOrCityContaining(query);
 		return ResponseEntity.ok(customers);
 	}
 

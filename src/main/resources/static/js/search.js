@@ -7,7 +7,7 @@ const search = () => {
         $(".search-result").hide();
     }else{
         //search
-        console.log(query);
+        //console.log(query);
 
         //sending request to server
 
