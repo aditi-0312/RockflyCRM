@@ -12,6 +12,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +29,7 @@ public class MainStock {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.DETACH)
+	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "productTypeId")
 	private ProductType productType;
 	
@@ -37,17 +39,28 @@ public class MainStock {
 	
 	private String color;
 	
-	@OneToOne(cascade = CascadeType.DETACH)
+	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "productSpecifications_id")
 	private ProductSpecifications productSpecifications;	
 	
 	//Size
-	@OneToOne(cascade = CascadeType.DETACH)
+	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "size_id")
-	private Size size;	
+	private Size sizes;	
 	
 	//Quantity
 	private String quantity;
+	
+	//price
+	private Long mrp;
+	
+	private Long salePrice;
+	
+	private Long wholesalePrice;
+	
+	private Long purchasePrice;
+	
+	
 	
 	@ManyToMany(cascade = CascadeType.DETACH)
 	private List<RackNumber> rackNumber; 

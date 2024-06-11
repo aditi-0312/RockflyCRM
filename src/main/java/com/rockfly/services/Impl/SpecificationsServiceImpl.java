@@ -7,22 +7,22 @@ import org.springframework.stereotype.Service;
 
 import com.rockfly.models.ProductSpecifications;
 import com.rockfly.repositories.ProductSpecificationsRepository;
-import com.rockfly.services.JeansSpecificationsService;
+import com.rockfly.services.SpecificationsService;
 
 @Service
-public class JeansSpecificationsServiceImpl implements JeansSpecificationsService {
+public class SpecificationsServiceImpl implements SpecificationsService {
 
 	@Autowired
 	private ProductSpecificationsRepository productSpecificationsRepository;
 	
 	@Override
-	public void saveJeansSpecifications(ProductSpecifications productSpecifications) {
+	public void saveSpecifications(ProductSpecifications productSpecifications) {
 		productSpecificationsRepository.save(productSpecifications);
 		
 	}
 
 	@Override
-	public List<ProductSpecifications> getAllJeansSpecifications() {
+	public List<ProductSpecifications> getAllSpecifications() {
 		
 		return productSpecificationsRepository.findAll();
 	}

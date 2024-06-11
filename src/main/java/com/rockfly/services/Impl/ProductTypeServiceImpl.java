@@ -21,8 +21,10 @@ import com.rockfly.dto.CustomerDTO;
 import com.rockfly.models.Customers;
 import com.rockfly.models.MainStock;
 import com.rockfly.models.ProductType;
+import com.rockfly.models.Size;
 import com.rockfly.repositories.MainStockRepository;
 import com.rockfly.repositories.ProductTypeRepository;
+import com.rockfly.repositories.SizeRepository;
 import com.rockfly.services.ProductTypeService;
 
 @Service
@@ -33,6 +35,9 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	
 	@Autowired
 	private MainStockRepository mainStockRepository;
+	
+	@Autowired
+	private SizeRepository sizeRepository;
 	
 //	@Autowired
 //	private PriRepo
@@ -47,6 +52,25 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	public List<ProductType> getAllProductType() {
 		
 		return productTypeRepository.findAll();
+	}
+
+	@Override
+	public void manageSize(Size size, ProductType productType) {
+		
+		  Size size2 = sizeRepository.findById(size.getSizeId()).get();
+		  
+		  
+		  ProductType productType2 = productTypeRepository.findById(productType.getProductId()).get();
+		
+		  List<ProductType> pt =  size2.getProductType();
+		  pt.add(productType2);
+		  
+		  List<Size> s = productType2.getSize();
+		  s.add(size2);
+		  
+		  sizeRepository.save(size2);
+		  productTypeRepository.save(productType2);
+		  
 	}
 	
 	

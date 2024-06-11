@@ -29,51 +29,17 @@ public class MainStockServiceImpl implements MainStockService{
 	private RackNumberRepository rackNumberRepository;
 	
 	@Override
-	public void saveItem(AddItemInput addItemInput) {
+	public void saveItem(MainStock mainStock) {
 			
-//			MainStock shirtMainStock = new MainStock();
-//			shirtMainStock.setProductSpecification(addItemInput.getProductSpecification());
-//			shirtMainStock.setStyleNumber(addItemInput.getStyleNumber());
-//			shirtMainStock.setItemHsnSac(addItemInput.getItemHsnSac());
-//			shirtMainStock.setColor(addItemInput.getColor());
-//			shirtMainStock.setProductType(addItemInput.getProductType());
-//			shirtMainStock.setSize(addItemInput.getSize());
-//			shirtMainStock.setQuantity(addItemInput.getQuantity());
-			
-//			mainStockRepositories.save(shirtMainStock);
+		mainStockRepositories.save(mainStock);
 		
 	}	
 	
-	
 	@Override
-	public List<MainStockDTO> getMainStockSortByProductType(String productType) {
-		return null;
+	public List<MainStock> getMainStockSortByProductType(String productType) {
+		
+		return mainStockRepositories.findAll();
 	}
-	
-//	@Override
-//	public List<MainStockDTO> getMainStockSortByProductType(String productType) {
-//		
-//		if (productType.equals("All")) {
-//			
-//			  List<MainStock> mainStock = mainStockRepositories.findAll();
-//			  
-//			  return mainStock.stream() .map(this::fromEntityToDTO)
-//			  .collect(Collectors.toList());
-//			 
-//		}
-//			List<MainStock> mainStockByProductType = mainStockRepositories.findByProductType(productType);
-//			return mainStockByProductType.stream()
-//					.map(this::fromEntityToDTO)
-//					.collect(Collectors.toList());
-//			
-//	}
-//	
-//	
-//	public MainStockDTO fromEntityToDTO(MainStock mainStock) {
-//		return new MainStockDTO(mainStock.getId(), mainStock.getProductType(), mainStock.getStyleNumber(), mainStock.getItemHsnSac(),
-//				mainStock.getColor(), mainStock.getProductSpecification(), mainStock.getSize(), mainStock.getQuantity(),
-//				mainStock.getPrice());
-//	}
 
 	@Override
 	public MainStock getMainStockProductDetailById(Long id) {
@@ -104,7 +70,6 @@ public class MainStockServiceImpl implements MainStockService{
 		List<RackNumber> rackNumbers = mainStock.getRackNumber();		
 		return rackNumbers;
 	}
-
 
 	
 

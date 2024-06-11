@@ -24,14 +24,14 @@ public class ProductType {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Long productId;
 	
 	private String productName;
 	
 	private String sizeType;
 	
-	@OneToOne(mappedBy = "productType")
-	private MainStock mainStock;
+	@OneToMany(mappedBy = "productType")
+	private List<MainStock> mainStock;
 	
 	@OneToMany(mappedBy = "productType")
 	private List<ProductSpecifications> productSpecifications;

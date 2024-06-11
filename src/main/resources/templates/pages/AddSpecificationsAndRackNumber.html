@@ -14,15 +14,15 @@
             <div class="card">
                 <div class="card-body">
  
-						<form th:action="@{/admin/saveTshirtSpecificationRepository}" th:method="post" class="form-inline mb-5">
+						<form th:action="@{/admin/addspecification}" th:method="post" class="form-inline mb-5">
 							<div class="form-group mx-sm-3 mb-2">
-								<label for="inputAlphaNumericSize" class="sr-only">T-shirt Specification</label> 
-								<input type="text" class="form-control" id="inputAlphaNumericSize" name="specification" placeholder="T-shirt Specification">
+								<label for="inputspecification" class="sr-only">T-shirt Specification</label> 
+								<input type="text" class="form-control" id="inputspecification" name="specification" placeholder="Specification">
 							</div>
 							<button type="submit" class="btn btn-primary mb-2">Add Specification</button>
 						</form>
 
-						<h4 class="card-title blue-underline col-md-12 text-colour">T-shirt Specification List</h4>
+						<h4 class="card-title blue-underline col-md-12 text-colour">Specification List</h4>
                     
 					
                     <div class="table-responsive">
@@ -30,14 +30,16 @@
                             <thead>
                             <tr>
                                 <th>S. No</th>
+                                <th>ID</th>
                                 <th>Specification</th>
                                 <th>Action</th>                           
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="tshirtSpecification, iterationStatus : ${tshirtSpecifications}">
+                            <tr th:each="Specification, iterationStatus : ${Specifications}">
                                 <td th:text=${iterationStatus.count}></td>
-                                <td th:text="${tshirtSpecification.specification}"></td>
+                                <td th:text="${Specification.id}"></td>
+                                <td th:text="${Specification.specification}"></td>
                                 <td>
                                     <a type="button" class="btn btn-danger text-white">Delete</a>
                                 </td>
@@ -50,90 +52,9 @@
             </div>
         </div> 
         
-        <!-- Add Shirt Specification -->
-           <div class="col-lg-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
- 
-						<form th:action="@{/admin/saveShirtSpecification}" th:method="post" class="form-inline mb-5">
-							<div class="form-group mx-sm-3 mb-2">
-								<label for="inputShirt" class="sr-only">Shirt Specification</label> 
-								<input type="text" class="form-control" id="inputshirt" name="specification" placeholder="Shirt Specification">
-							</div>
-							<button type="submit" class="btn btn-primary mb-2">Add Specification</button>
-						</form>
-
-						<h4 class="card-title blue-underline col-md-12 text-colour">Shirt Specification List</h4>
-                    
-					
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>S. No</th>
-                                <th>Specification</th>
-                                <th>Action</th>                           
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="shirtSpecification, iterationStatus : ${shirtSpecifications}">
-                                <td th:text=${iterationStatus.count}></td>
-                                <td th:text="${shirtSpecification.specification}"></td>
-                                <td>
-                                    <a type="button" class="btn btn-danger text-white">Delete</a>
-                                </td>
-                                
-                            </tr>                           
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        
-        <!-- Add Jeans Specification -->
-           <div class="col-lg-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
- 
-						<form th:method="post" class="form-inline mb-5">
-							<div class="form-group mx-sm-3 mb-2">
-								<label for="inputAlphaNumericSize" class="sr-only">Jeans Specification</label> 
-								<input type="text" class="form-control" id="inputAlphaNumericSize" name="size" placeholder="Jeans Specification">
-							</div>
-							<button type="submit" class="btn btn-primary mb-2">Add Specification</button>
-						</form>
-
-						<h4 class="card-title blue-underline col-md-12 text-colour">Jeans Specification List</h4>
-                    
-					
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>S. No</th>
-                                <th>Specification</th>
-                                <th>Action</th>                           
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="py-1"></td>
-                                <td></td>
-                                <td>
-                                    <a type="button" class="btn btn-danger text-white">Delete</a>
-                                </td>
-                                
-                            </tr>                           
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        
-        
-         <!-- Add Rack Number -->
+      
+      
+         <!-- Add Rack Number 
            <div class="col-lg-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
@@ -172,7 +93,7 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div> --> 
 </div>
 </section>
 </body>

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rockfly.dto.BarcodeDTO;
@@ -29,12 +31,14 @@ import com.rockfly.models.ProductType;
 import com.rockfly.models.RackNumber;
 
 import com.rockfly.models.DocumentType;
+import com.rockfly.models.MainStock;
 import com.rockfly.models.Size;
 import com.rockfly.models.ProductType;
 import com.rockfly.repositories.CustomersRepository;
 import com.rockfly.repositories.DocumentTypeRepository;
+import com.rockfly.repositories.ProductTypeRepository;
 import com.rockfly.services.CustomerService;
-import com.rockfly.services.JeansSpecificationsService;
+import com.rockfly.services.SpecificationsService;
 import com.rockfly.services.MainStockService;
 import com.rockfly.services.SizeService;
 import com.rockfly.services.ProductTypeService;
@@ -64,13 +68,16 @@ public class AdminController {
 	private RackNumberService rackNumberService;
 	
 	@Autowired
-	private JeansSpecificationsService jeansSpecificationsService;
+	private SpecificationsService specificationsService;
 
 	@Autowired
 	private DocumentTypeRepository documentTypeRepository;
 	
 	@Autowired
 	private CustomersRepository customersRepository;
+	
+	@Autowired
+	private ProductTypeRepository productTypeRepository;
 
 
 	@GetMapping("/addEmployee")
@@ -100,18 +107,40 @@ public class AdminController {
 	@GetMapping("/addItem")
 	public String getAddItemPage(Model model) {
 
+		//System.out.println(categoryId);
 		model.addAttribute("productType", productTypeService.getAllProductType());
 		
 		model.addAttribute("Sizes", sizeService.getAllSize());
 
 		return "pages/AddItem";
 	}
+	
+	
+	//getting ProductSpecifications of a product and creating options in select in addItem page
+	  @GetMapping("/getproductSpecification/{productId}")
+	  @ResponseBody
+	  public List<ProductSpecifications> listProductSpecifications(@PathVariable Long productId){
+		  
+		  ProductType productType =  productTypeRepository.findById(productId).get();
+		  List<ProductSpecifications> productSpecifications =  productType.getProductSpecifications();
+	    return productSpecifications;
+	  }
+	  
+	//getting Size of a product and creating options in select in addItem page
+	  @GetMapping("/getsize/{productId}")
+	  @ResponseBody
+	  public List<Size> listProductSize(@PathVariable Long productId){
+		 
+		  ProductType productType =  productTypeRepository.findById(productId).get();
+		  List<Size> size =  productType.getSize();
+	    return size;
+	  }
 
 	// Saving Item in database
 	@PostMapping("/addItem")
-	public String saveItem(@ModelAttribute AddItemInput addItemInput) {
+	public String saveItem(@ModelAttribute MainStock mainStock) {
 
-		mainStockService.saveItem(addItemInput);
+		mainStockService.saveItem(mainStock);
 
 		return "redirect:/admin/addItem";
 	}
@@ -136,19 +165,41 @@ public class AdminController {
 		return "redirect:/admin/addProductAndSize";
 	}
 	
+	
+	  // Add Size
+	  @PostMapping("/addSize")
+	  public String AddSize(@ModelAttribute Size size) {
+	  
+		  sizeService.saveSize(size); 
+		  return "redirect:/admin/addProductAndSize"; 
+	  
+	  }
+	  
+	  @PostMapping("/manageSize")
+	  public String manageSize(@ModelAttribute Size size, @ModelAttribute ProductType productType) {
+		  
+		  productTypeService.manageSize(size, productType);
+		  
+		  
+		return "redirect:/admin/addProductAndSize";
+		  
+	  }
+	
 	//Specifications And Rack Number
 	@GetMapping("/addSpecificationsAndRackNumber")
 	public String AddSpecificationsAndRackNumber(Model model) {
 		
 		model.addAttribute("RackNumbers",rackNumberService.getAllRackNumbers());
+		model.addAttribute("Specifications", specificationsService.getAllSpecifications());
 		
 		return "pages/AddSpecificationsAndRackNumber";
 	}
 	
 	//saving Specifications 
+	@PostMapping("/addspecification")
 	public String saveSpecifications(@ModelAttribute ProductSpecifications productSpecifications) {
 		
-		jeansSpecificationsService.saveJeansSpecifications(productSpecifications);
+		specificationsService.saveSpecifications(productSpecifications);
 		
 		return "redirect:/admin/addSpecificationsAndRackNumber";
 	}
@@ -159,15 +210,6 @@ public class AdminController {
 		return "redirect:/admin/addSpecificationsAndRackNumber";
 	}
 
-	
-	  // Add Numeric Size
-	  @PostMapping("/addNumericSize")
-	  public String AddNumericSize(@ModelAttribute Size size) {
-	  
-		  sizeService.saveSize(size); 
-		  return "redirect:/admin/addProductAndSize"; 
-	  
-	  }
 	 
 
 	@GetMapping("/addCustomer")
