@@ -3,6 +3,7 @@ package com.rockfly.services.Impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,8 +18,9 @@ import org.springframework.stereotype.Service;
 import com.rockfly.models.Account;
 import com.rockfly.models.Authority;
 import com.rockfly.repositories.AccountRepository;
+import com.rockfly.repositories.RolesRepository;
 import com.rockfly.services.AccountService;
-import com.rockfly.util.constants.Roles;
+import com.rockfly.models.Roles;
 
 @Service
 public class AccountServiceImpl implements UserDetailsService, AccountService{
@@ -28,9 +30,12 @@ public class AccountServiceImpl implements UserDetailsService, AccountService{
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private RolesRepository rolesRepository;
 
 	@Override
-	public Account save(Account account) {
+	public Account saveAccountByDefaultRole(Account account) {
 		System.out.println(account.getPassword());
 		System.out.println(account.getName());
 
@@ -48,17 +53,33 @@ public class AccountServiceImpl implements UserDetailsService, AccountService{
 		account.setPhone(account.getPhone());
 		account.setPincode(account.getPincode());
 		
-		if(account.getRole()=="Admin")
-		account.setRole(Roles.ADMIN.getRole());
-		if(account.getRole()=="Sales")
-			account.setRole(Roles.SALES.getRole());
-		if(account.getRole()=="Dispatcher")
-			account.setRole(Roles.DISPATCHER.getRole());
-		if(account.getRole()=="Biller")
-			account.setRole(Roles.BILLER.getRole());
-		
+		Roles role =  rolesRepository.findByRole("USER");
+        
+        account.addRole(role);
 	
 		return accountRepository.save(account);
+	}
+	
+	@Override
+	public List<Account> getAllAccount() {
+		
+		return accountRepository.findAll();
+	}
+
+	@Override
+	public Account getAccountById(Long id) {
+		
+		return accountRepository.findById(id).get();
+	}
+
+	@Override
+	public void saveAccount(Account account) {
+		String encodedPassword=passwordEncoder.encode(account.getPassword());
+
+		account.setPassword(encodedPassword);
+		
+		
+		accountRepository.save(account);
 	}
 	
 	@Override
@@ -76,14 +97,20 @@ public class AccountServiceImpl implements UserDetailsService, AccountService{
 		}
 		Account account = optionalAccount.get();
 
-		List<GrantedAuthority> grantedAuthority = new ArrayList<>();
-		grantedAuthority.add(new SimpleGrantedAuthority(account.getRole()));
+		List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
 		
-		for(Authority _auth: account.getAuthorities()){
-            grantedAuthority.add(new SimpleGrantedAuthority(_auth.getName()));
-
-}
-
-		return new User(account.getEmail(), account.getPassword(), grantedAuthority);
+		Set<Roles> roles = account.getRoles();
+		
+		List<SimpleGrantedAuthority> simpleGrantedAuthorities = new ArrayList<>();
+		
+		for(Roles r : roles) {
+			simpleGrantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+r.getRole()));
+		}
+		
+		grantedAuthorities.addAll(simpleGrantedAuthorities);
+		
+		return new User(account.getEmail(), account.getPassword(), grantedAuthorities);
 	}
+
+	
 }

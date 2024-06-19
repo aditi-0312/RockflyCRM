@@ -58,7 +58,7 @@ public class WebSecurityConfig {
 								.passwordParameter("password").defaultSuccessUrl("/dashboard", true).failureUrl("/login?error")
 								.permitAll().and()
 								.logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-										.logoutSuccessUrl("/login").deleteCookies("JSESSIONID").invalidateHttpSession(true))
+										.logoutSuccessUrl("/login?logout").deleteCookies("JSESSIONID").invalidateHttpSession(true))
 								.rememberMe(me -> me.rememberMeParameter("remember-me")).httpBasic(withDefaults());
 					} catch (Exception e) {
 						e.printStackTrace();

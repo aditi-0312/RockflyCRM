@@ -34,6 +34,7 @@ public class Size {
 	private Date timeStamp;
 	
 	@OneToMany(mappedBy = "sizes")
+	@JsonIgnore
 	private List<MainStock> mainStock;
 	
 	@ManyToMany(mappedBy = "size")
