@@ -45,7 +45,7 @@ public class Account {
 	
 	private String pincode;
 
-	private String role;
+//	private String role;
 	
 	@ManyToMany
     @JoinTable(
@@ -57,4 +57,16 @@ public class Account {
 
         private Set<Authority> authorities = new HashSet<>();
 
+	
+	@ManyToMany
+	@JoinTable(
+			name = "Account_roles",
+			joinColumns = @JoinColumn(name = "account_id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id")
+			)
+		private Set<Roles> roles = new HashSet<>();
+	
+		public void addRole(Roles roles) {
+			this.roles.add(roles);
+	}
 }

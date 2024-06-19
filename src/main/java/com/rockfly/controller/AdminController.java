@@ -43,6 +43,7 @@ import com.rockfly.services.MainStockService;
 import com.rockfly.services.SizeService;
 import com.rockfly.services.ProductTypeService;
 import com.rockfly.services.RackNumberService;
+import com.rockfly.services.RolesService;
 import com.rockfly.services.Impl.AccountServiceImpl;
 
 @Controller
@@ -78,20 +79,23 @@ public class AdminController {
 	
 	@Autowired
 	private ProductTypeRepository productTypeRepository;
+	
+	@Autowired
+	private RolesService rolesService;
 
 
 	@GetMapping("/addEmployee")
 	public String getAddEmployeePage(Model model) {
 		Account account = new Account();
 		model.addAttribute("account", account);
-		return "pages/AddEmployee";
+		return "pages/admin/AddEmployee";
 
 	}
 	
 	@PostMapping("/addEmployee")
 	public String register_accountString(@ModelAttribute Account account,RedirectAttributes attributes) {
 		try {
-			accountService.save(account);
+			accountService.saveAccountByDefaultRole(account);
 			attributes.addFlashAttribute("message","Employee added successfully");
 			return "redirect:/admin/addEmployee";
 			
@@ -101,6 +105,34 @@ public class AdminController {
 
 		}
 		
+	}
+	
+	@GetMapping("/employeelist")
+	public String getAllEmployee(Model model) {
+		
+		model.addAttribute("employees", accountService.getAllAccount());
+		
+		return "pages/admin/EmployeeList";
+	}
+	
+	@GetMapping("/employee/edit/{id}")
+	public String editEmployee(@PathVariable("id") Long id, Model model) {
+		
+		Account account = accountService.getAccountById(id);
+		
+		model.addAttribute("account", account);
+		
+		model.addAttribute("roles", rolesService.getAllRoles());
+		
+		return"pages/admin/EditEmployee";
+	}
+	
+	@PostMapping("/saveEditedEmp")
+	public String saveEditedEmployee(Account account) {
+		
+		accountService.saveAccount(account);
+		
+		return "redirect:/admin/employeelist";
 	}
 
 	// Add Item Page
@@ -112,7 +144,7 @@ public class AdminController {
 		
 		model.addAttribute("Sizes", sizeService.getAllSize());
 
-		return "pages/AddItem";
+		return "pages/manager/AddItem";
 	}
 	
 	
@@ -153,7 +185,7 @@ public class AdminController {
 
 		model.addAttribute("numericSize", sizeService.getAllSize());
 
-		return "pages/AddProductAndSize";
+		return "pages/admin/AddProductAndSize";
 	}
 
 	// Add Product
@@ -192,7 +224,7 @@ public class AdminController {
 		model.addAttribute("RackNumbers",rackNumberService.getAllRackNumbers());
 		model.addAttribute("Specifications", specificationsService.getAllSpecifications());
 		
-		return "pages/AddSpecificationsAndRackNumber";
+		return "pages/admin/AddSpecificationsAndRackNumber";
 	}
 	
 	//saving Specifications 
@@ -222,7 +254,7 @@ public class AdminController {
 		model.addAttribute("docs", docs);
 		DocumentType documentType=new DocumentType();
 		model.addAttribute("docType",documentType);
-		return "pages/AddCustomer";
+		return "pages/sales/AddCustomer";
 	}
 
 	@PostMapping("/addCustomer")
@@ -279,7 +311,7 @@ public class AdminController {
 		}
 
 		model.addAttribute("customers", customers_on_page);
-		return "pages/CustomerList";
+		return "pages/sales/CustomerList";
 
 	}
 	
@@ -288,7 +320,7 @@ public class AdminController {
 	public String getCustomer(@PathVariable("id") Long id, Model model) {
 		
 		model.addAttribute("customer", customersRepository.findById(id).get());
-		return "pages/Customer";
+		return "pages/sales/Customer";
 	}
 
 	@PostMapping("/documentType")

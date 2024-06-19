@@ -49,6 +49,7 @@
                                 <th>ID</th>
                                 <th>Product Type</th>
                                 <th>Size Type</th>
+                                <th>Manage</th>
                                 <th>Action</th>                           
                             </tr>
                             </thead>
@@ -58,6 +59,11 @@
                                 <td th:text="${product.productId}"></td>
                                  <td th:text="${product.productName}"></td>
                                 <td class="py-1" th:text="${product.sizeType}"></td>
+                                <td class="py-1">
+                                
+                                <a href="#">manage..</a>
+                                
+                                </td>
                                 <td>
                                     <a type="button" class="btn btn-danger text-white">Delete</a>
                                 </td>

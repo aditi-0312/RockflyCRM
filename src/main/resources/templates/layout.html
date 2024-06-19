@@ -181,20 +181,64 @@
 
 
 							</ul>
-						</div></li>
+						</div>
+						</li>
+						
+						
+						
+						
+						<!-- order  -->
+
+					<li class="nav-item"><a class="nav-link"
+						data-toggle="collapse" href="#ui-basic2" aria-expanded="false"
+						aria-controls="ui-basic"> 
+						<i class="menu-icon mdi mdi-baby-buggy"></i> <span
+							class="menu-title">Order</span> <i class="menu-arrow"></i>
+					</a>
+
+						<div class="collapse" id="ui-basic2">
+							<ul class="nav flex-column sub-menu">
+
+								<li class="nav-item"><a class="nav-link" href="#" th:href="@{/sales/preorder}">Pre-Order</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">Post Order</a></li>
 
 
+							</ul>
+						</div>
+						</li>
 
+				
 					<!-- Add Employee  -->
-					<span sec:authorize="hasRole('ROLE_ADMIN')">
+				<div sec:authorize="hasRole('ROLE_ADMIN')">
+					<li class="nav-item"><a class="nav-link"
+						data-toggle="collapse" href="#ui-basic3" aria-expanded="false"
+						aria-controls="ui-basic"> 
+						<i class="menu-icon mdi mdi-account-edit"></i> <span
+							class="menu-title">Employee</span> <i class="menu-arrow"></i>
+					</a>
 
-						<li class="nav-item"><a class="nav-link"
-							th:href="@{/admin/addEmployee}"> <i
-								class="menu-icon mdi mdi-account-multiple"></i> <span
-								class="menu-title">Staff Appointment</span>
-						</a></li>
+						<div class="collapse" id="ui-basic3">
+							<ul class="nav flex-column sub-menu">
 
-					</span>
+								<li class="nav-item"> <a class="nav-link" th:href="@{/admin/addEmployee}"> 
+									<i class="menu-icon mdi mdi-account-multiple"></i> <span class="menu-title">Add Staff</span>
+									</a>
+								</li>
+								
+								<li class="nav-item"> <a class="nav-link" href="#" th:href="@{/admin/employeelist}"> 
+									<i class="menu-icon mdi mdi-clipboard-text"></i> <span class="menu-title">Staff List</span>
+									</a>
+								</li>
+
+
+							</ul>
+						</div>
+						</li>
+						</div>
+
+
+
+					
 
 					<li class="nav-item"><a class="nav-link" href="#"> <i
 							class="menu-icon mdi mdi-chart-line"></i> <span
@@ -249,8 +293,7 @@
 							© 2024 <a href="https://www.suprams.net/" target="_blank">Suprams</a>.
 							All rights reserved.
 						</span> <span
-							class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-white">Hand-crafted
-							& made with <i class="mdi mdi-heart text-danger"></i>
+							class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-white">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i>
 						</span>
 
 					</div>
@@ -287,6 +330,9 @@
 	<script language="javascript">print_state("state");</script>
 	<script language="javascript">print_city("city");</script>
 	<!-- script ends -->
+	
+	<!-- Pre-Order js -->
+	<script th:src="@{/js/preOrder.js}"></script>
 
 
 	<script src="https://code.jquery.com/jquery-3.7.1.js"
