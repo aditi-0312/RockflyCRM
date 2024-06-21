@@ -1,28 +1,13 @@
 package com.rockfly.services.Impl;
 
-import java.io.ByteArrayOutputStream;
-import java.util.Hashtable;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.Writer;
-import com.google.zxing.client.j2se.MatrixToImageConfig;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.oned.Code128Writer;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.rockfly.dto.BarcodeDTO;
-import com.rockfly.dto.CustomerDTO;
-import com.rockfly.models.Customers;
-import com.rockfly.models.MainStock;
 import com.rockfly.models.ProductType;
 import com.rockfly.models.Size;
-import com.rockfly.repositories.MainStockRepository;
+import com.rockfly.repositories.ProductDetailsRepository;
 import com.rockfly.repositories.ProductTypeRepository;
 import com.rockfly.repositories.SizeRepository;
 import com.rockfly.services.ProductTypeService;
@@ -34,7 +19,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	private ProductTypeRepository productTypeRepository;
 	
 	@Autowired
-	private MainStockRepository mainStockRepository;
+	private ProductDetailsRepository productDetailsRepository;
 	
 	@Autowired
 	private SizeRepository sizeRepository;
@@ -60,7 +45,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 		  Size size2 = sizeRepository.findById(size.getSizeId()).get();
 		  
 		  
-		  ProductType productType2 = productTypeRepository.findById(productType.getProductId()).get();
+		  ProductType productType2 = productTypeRepository.findById(productType.getProductTypeId()).get();
 		
 		  List<ProductType> pt =  size2.getProductType();
 		  pt.add(productType2);

@@ -29,6 +29,6 @@ public class RackNumber {
 	@CreationTimestamp
 	private Date timeStamp;
 	
-	@ManyToMany(mappedBy = "rackNumber")
-	private List<MainStock> mainStock;
+//	@ManyToMany(mappedBy = "rackNumber")
+//	private List<ProductDetails> mainStock;
 }

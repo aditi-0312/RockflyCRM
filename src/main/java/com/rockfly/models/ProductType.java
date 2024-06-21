@@ -11,7 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,18 +20,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "product_type")
 public class ProductType {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long productId;
+	private Long productTypeId;
 	
 	private String productName;
 	
 	private String sizeType;
 	
 	@OneToMany(mappedBy = "productType")
-	private List<MainStock> mainStock;
+	private List<ProductDetails> productDetails;
 	
 	@OneToMany(mappedBy = "productType")
 	private List<ProductSpecifications> productSpecifications;

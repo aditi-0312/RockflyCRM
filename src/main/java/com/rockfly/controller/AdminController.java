@@ -1,4 +1,5 @@
 package com.rockfly.controller;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +23,6 @@ import com.rockfly.dto.BarcodeDTO;
 import com.rockfly.dto.CustomerDTO;
 import com.rockfly.dto.MainStockDTO;
 import com.rockfly.models.Account;
-import com.rockfly.models.AddItemInput;
 import com.rockfly.models.Customers;
 
 import com.rockfly.models.ProductSpecifications;
@@ -31,7 +31,7 @@ import com.rockfly.models.ProductType;
 import com.rockfly.models.RackNumber;
 
 import com.rockfly.models.DocumentType;
-import com.rockfly.models.MainStock;
+import com.rockfly.models.ProductDetails;
 import com.rockfly.models.Size;
 import com.rockfly.models.ProductType;
 import com.rockfly.repositories.CustomersRepository;
@@ -39,7 +39,7 @@ import com.rockfly.repositories.DocumentTypeRepository;
 import com.rockfly.repositories.ProductTypeRepository;
 import com.rockfly.services.CustomerService;
 import com.rockfly.services.SpecificationsService;
-import com.rockfly.services.MainStockService;
+import com.rockfly.services.ProductDetailsService;
 import com.rockfly.services.SizeService;
 import com.rockfly.services.ProductTypeService;
 import com.rockfly.services.RackNumberService;
@@ -63,26 +63,25 @@ public class AdminController {
 	private SizeService sizeService;
 
 	@Autowired
-	private MainStockService mainStockService;
-	
+	private ProductDetailsService mainStockService;
+
 	@Autowired
 	private RackNumberService rackNumberService;
-	
+
 	@Autowired
 	private SpecificationsService specificationsService;
 
 	@Autowired
 	private DocumentTypeRepository documentTypeRepository;
-	
+
 	@Autowired
 	private CustomersRepository customersRepository;
-	
+
 	@Autowired
 	private ProductTypeRepository productTypeRepository;
-	
+
 	@Autowired
 	private RolesService rolesService;
-
 
 	@GetMapping("/addEmployee")
 	public String getAddEmployeePage(Model model) {
@@ -91,47 +90,47 @@ public class AdminController {
 		return "pages/admin/AddEmployee";
 
 	}
-	
+
 	@PostMapping("/addEmployee")
-	public String register_accountString(@ModelAttribute Account account,RedirectAttributes attributes) {
+	public String register_accountString(@ModelAttribute Account account, RedirectAttributes attributes) {
 		try {
 			accountService.saveAccountByDefaultRole(account);
-			attributes.addFlashAttribute("message","Employee added successfully");
+			attributes.addFlashAttribute("message", "Employee added successfully");
 			return "redirect:/admin/addEmployee";
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 			return "redirect:/admin/addEmployee";
 
 		}
-		
+
 	}
-	
+
 	@GetMapping("/employeelist")
 	public String getAllEmployee(Model model) {
-		
+
 		model.addAttribute("employees", accountService.getAllAccount());
-		
+
 		return "pages/admin/EmployeeList";
 	}
-	
+
 	@GetMapping("/employee/edit/{id}")
 	public String editEmployee(@PathVariable("id") Long id, Model model) {
-		
+
 		Account account = accountService.getAccountById(id);
-		
+
 		model.addAttribute("account", account);
-		
+
 		model.addAttribute("roles", rolesService.getAllRoles());
-		
-		return"pages/admin/EditEmployee";
+
+		return "pages/admin/EditEmployee";
 	}
-	
+
 	@PostMapping("/saveEditedEmp")
 	public String saveEditedEmployee(Account account) {
-		
+
 		accountService.saveAccount(account);
-		
+
 		return "redirect:/admin/employeelist";
 	}
 
@@ -139,38 +138,38 @@ public class AdminController {
 	@GetMapping("/addItem")
 	public String getAddItemPage(Model model) {
 
-		//System.out.println(categoryId);
+		// System.out.println(categoryId);
 		model.addAttribute("productType", productTypeService.getAllProductType());
-		
+
 		model.addAttribute("Sizes", sizeService.getAllSize());
 
 		return "pages/manager/AddItem";
 	}
-	
-	
-	//getting ProductSpecifications of a product and creating options in select in addItem page
-	  @GetMapping("/getproductSpecification/{productId}")
-	  @ResponseBody
-	  public List<ProductSpecifications> listProductSpecifications(@PathVariable Long productId){
-		  
-		  ProductType productType =  productTypeRepository.findById(productId).get();
-		  List<ProductSpecifications> productSpecifications =  productType.getProductSpecifications();
-	    return productSpecifications;
-	  }
-	  
-	//getting Size of a product and creating options in select in addItem page
-	  @GetMapping("/getsize/{productId}")
-	  @ResponseBody
-	  public List<Size> listProductSize(@PathVariable Long productId){
-		 
-		  ProductType productType =  productTypeRepository.findById(productId).get();
-		  List<Size> size =  productType.getSize();
-	    return size;
-	  }
+
+	// getting ProductSpecifications of a product and creating options in select in
+	// addItem page
+	@GetMapping("/getproductSpecification/{productId}")
+	@ResponseBody
+	public List<ProductSpecifications> listProductSpecifications(@PathVariable Long productId) {
+
+		ProductType productType = productTypeRepository.findById(productId).get();
+		List<ProductSpecifications> productSpecifications = productType.getProductSpecifications();
+		return productSpecifications;
+	}
+
+	// getting Size of a product and creating options in select in addItem page
+	@GetMapping("/getsize/{productId}")
+	@ResponseBody
+	public List<Size> listProductSize(@PathVariable Long productId) {
+
+		ProductType productType = productTypeRepository.findById(productId).get();
+		List<Size> size = productType.getSize();
+		return size;
+	}
 
 	// Saving Item in database
 	@PostMapping("/addItem")
-	public String saveItem(@ModelAttribute MainStock mainStock) {
+	public String saveItem(@ModelAttribute ProductDetails mainStock) {
 
 		mainStockService.saveItem(mainStock);
 
@@ -193,82 +192,79 @@ public class AdminController {
 	public String AddProductType(@ModelAttribute ProductType productType) {
 
 		productTypeService.addProductType(productType);
-	
+
 		return "redirect:/admin/addProductAndSize";
 	}
-	
-	
-	  // Add Size
-	  @PostMapping("/addSize")
-	  public String AddSize(@ModelAttribute Size size) {
-	  
-		  sizeService.saveSize(size); 
-		  return "redirect:/admin/addProductAndSize"; 
-	  
-	  }
-	  
-	  @PostMapping("/manageSize")
-	  public String manageSize(@ModelAttribute Size size, @ModelAttribute ProductType productType) {
-		  
-		  productTypeService.manageSize(size, productType);
-		  
-		  
+
+	// Add Size
+	@PostMapping("/addSize")
+	public String AddSize(@ModelAttribute Size size) {
+
+		sizeService.saveSize(size);
 		return "redirect:/admin/addProductAndSize";
-		  
-	  }
-	
-	//Specifications And Rack Number
+
+	}
+
+	@PostMapping("/manageSize")
+	public String manageSize(@ModelAttribute Size size, @ModelAttribute ProductType productType) {
+
+		productTypeService.manageSize(size, productType);
+
+		return "redirect:/admin/addProductAndSize";
+
+	}
+
+	// Specifications And Rack Number
 	@GetMapping("/addSpecificationsAndRackNumber")
 	public String AddSpecificationsAndRackNumber(Model model) {
-		
-		model.addAttribute("RackNumbers",rackNumberService.getAllRackNumbers());
+
+		model.addAttribute("RackNumbers", rackNumberService.getAllRackNumbers());
 		model.addAttribute("Specifications", specificationsService.getAllSpecifications());
-		
+
 		return "pages/admin/AddSpecificationsAndRackNumber";
 	}
-	
-	//saving Specifications 
+
+	// saving Specifications
 	@PostMapping("/addspecification")
 	public String saveSpecifications(@ModelAttribute ProductSpecifications productSpecifications) {
-		
+
 		specificationsService.saveSpecifications(productSpecifications);
-		
+
 		return "redirect:/admin/addSpecificationsAndRackNumber";
 	}
-	//saving Rank Number
+
+	// saving Rank Number
 	@PostMapping("/saveRackNumber")
 	public String saveRackNumber(@ModelAttribute RackNumber rackNumber) {
 		rackNumberService.saveRack(rackNumber);
 		return "redirect:/admin/addSpecificationsAndRackNumber";
 	}
 
-	 
-
 	@GetMapping("/addCustomer")
 	public String getAddCustomerPage(Model model) {
 		Customers customers = new Customers();
 		model.addAttribute("customers", customers);
-		
-		List<DocumentType> docs=new ArrayList<>();
+
+		List<DocumentType> docs = new ArrayList<>();
 		docs.addAll(documentTypeRepository.findAll());
 		model.addAttribute("docs", docs);
-		DocumentType documentType=new DocumentType();
-		model.addAttribute("docType",documentType);
+		DocumentType documentType = new DocumentType();
+		model.addAttribute("docType", documentType);
 		return "pages/sales/AddCustomer";
 	}
 
 	@PostMapping("/addCustomer")
-	public String addCustomer(@ModelAttribute Customers customers,RedirectAttributes attributes) {
+	public String addCustomer(@ModelAttribute Customers customers, RedirectAttributes attributes) {
 		System.out.println(customers.getShopName());
 		try {
 			customerServices.save(customers);
-			attributes.addFlashAttribute("message","Customer added successfully");
+			attributes.addFlashAttribute("message", "Customer added successfully");
 			return "redirect:/admin/addCustomer";
 		} catch (Exception e) {
 			System.out.println(e);
 			return "redirect:/admin/addCustomer";
 		}
-	
+
 	}
 
 //	@ResponseBody
@@ -314,11 +310,11 @@ public class AdminController {
 		return "pages/sales/CustomerList";
 
 	}
-	
-	//display customers having specific id from the search bar
+
+	// display customers having specific id from the search bar
 	@GetMapping("/customer/{id}")
 	public String getCustomer(@PathVariable("id") Long id, Model model) {
-		
+
 		model.addAttribute("customer", customersRepository.findById(id).get());
 		return "pages/sales/Customer";
 	}
@@ -338,5 +334,5 @@ public class AdminController {
 //	//	model.addAttribute("MainStock", mainStock);
 //		return "pages/ProductList";
 //	}
-	
+
 }

@@ -23,7 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MainStock {
+public class ProductDetails {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -62,8 +62,8 @@ public class MainStock {
 	
 	
 	
-	@ManyToMany(cascade = CascadeType.DETACH)
-	private List<RackNumber> rackNumber; 
+//	@ManyToMany(cascade = CascadeType.DETACH)
+//	private List<RackNumber> rackNumber; 
 	
 	@CreationTimestamp
 	private Date timeStamp;

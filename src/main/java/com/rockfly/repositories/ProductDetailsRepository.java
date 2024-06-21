@@ -1,12 +1,10 @@
 package com.rockfly.repositories;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.rockfly.models.MainStock;
+import com.rockfly.models.ProductDetails;
 
-public interface MainStockRepository extends JpaRepository<MainStock, Long>{
+public interface ProductDetailsRepository extends JpaRepository<ProductDetails, Long>{
 
 	//List<MainStock> findByproductType(String productType);
 }

@@ -32,7 +32,7 @@ public class ProductSpecifications {
 	
 	@OneToMany(mappedBy = "productSpecifications")
 	@JsonIgnore
-	private List<MainStock> mainStock;
+	private List<ProductDetails> productDetails;
 	
 	@ManyToOne
 	@JoinColumn(name = "productType_id")

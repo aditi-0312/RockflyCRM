@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.rockfly.models.Account;
-import com.rockfly.models.Authority;
+//import com.rockfly.models.Authority;
 import com.rockfly.repositories.AccountRepository;
 import com.rockfly.repositories.RolesRepository;
 import com.rockfly.services.AccountService;

@@ -13,7 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "size")
 public class Size {
 
 	@Id
@@ -35,7 +36,7 @@ public class Size {
 	
 	@OneToMany(mappedBy = "sizes")
 	@JsonIgnore
-	private List<MainStock> mainStock;
+	private List<ProductDetails> productDetails;
 	
 	@ManyToMany(mappedBy = "size")
 	@JsonIgnore

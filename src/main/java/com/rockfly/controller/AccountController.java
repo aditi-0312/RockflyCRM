@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rockfly.dto.MainStockDTO;
-import com.rockfly.models.MainStock;
+import com.rockfly.models.ProductDetails;
 import com.rockfly.models.RackNumber;
-import com.rockfly.services.MainStockService;
+import com.rockfly.services.ProductDetailsService;
 import com.rockfly.services.RackNumberService;
 
 @Controller
 public class AccountController {
 	
 	@Autowired
-	private MainStockService mainStockService;
+	private ProductDetailsService mainStockService;
 	
 	@Autowired
 	private RackNumberService rackNumberService;
@@ -34,7 +34,7 @@ public class AccountController {
 	@GetMapping("/mainStock")
 	public String getMainStockList(@RequestParam(name = "sortByproduct_type", defaultValue = "All") String product_type, Model model) {
 		
-	List<MainStock> mainStock = mainStockService.getMainStockSortByProductType(product_type);
+	List<ProductDetails> mainStock = mainStockService.getMainStockSortByProductType(product_type);
 		
 		model.addAttribute("MainStock" , mainStock);
 		
@@ -49,7 +49,7 @@ public class AccountController {
 		
 		model.addAttribute("MainStockProduct", mainStockService.getMainStockProductDetailById(id));
 		
-		model.addAttribute("rackNumbers", mainStockService.getRackNumberByMainStockId(id));
+//		model.addAttribute("rackNumbers", mainStockService.getRackNumberByMainStockId(id));
 		
 		return "pages/ViewProductDetails";
 	}
@@ -57,7 +57,7 @@ public class AccountController {
 	@PostMapping("/mainStock")
 	public String saveRackNumber(@RequestParam(name = "mainStockId") Long id, @ModelAttribute RackNumber rackNumber) {
 		
-			mainStockService.setRackNumber(id, rackNumber);
+//			mainStockService.setRackNumber(id, rackNumber);
 			Long productId = id;
 		return "redirect:/mainStock/" + productId;
 	}

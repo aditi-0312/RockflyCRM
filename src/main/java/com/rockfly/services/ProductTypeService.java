@@ -3,7 +3,7 @@ package com.rockfly.services;
 import java.util.List;
 
 import com.rockfly.dto.BarcodeDTO;
-import com.rockfly.models.MainStock;
+import com.rockfly.models.ProductDetails;
 import com.rockfly.models.ProductType;
 import com.rockfly.models.Size;
 
