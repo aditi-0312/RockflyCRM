@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -38,6 +40,7 @@ public class ProductType {
 	private List<ProductSpecifications> productSpecifications;
 	
 	@ManyToMany
+	@JoinTable(name = "product_type_size", joinColumns = @JoinColumn(name = "product_type_id"), inverseJoinColumns = @JoinColumn(name = "size_id"))
 	private List<Size> size;
 	
 	@CreationTimestamp

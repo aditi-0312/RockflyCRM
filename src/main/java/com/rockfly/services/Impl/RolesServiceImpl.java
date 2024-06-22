@@ -20,5 +20,10 @@ public class RolesServiceImpl implements RolesService{
 		
 		return rolesRepository.findAll();
 	}
+	
+	@Override
+	 public boolean roleExists(String email) {
+	        return rolesRepository.findbyrolename(email).isPresent();
+	    }
 
 }
