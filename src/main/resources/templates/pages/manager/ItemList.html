@@ -35,7 +35,7 @@
                 <div class="card-body">
                 
                 	<div class="form-group col-md-2">
-                	<form th:action="@{/mainStock}">
+                	<form th:action="@{/manager/mainStock}">
 						<label for="sortBy">Sort By</label> 
 						<select class="form-control" id="sortBy" name="sortByproduct_type">
 							<option>All</option>
@@ -90,7 +90,7 @@
                                 
                                 <td >
                                 
-                             <a th:href="@{/manager/mainStock/{productId} (productId=${mainStock.id}) }">more..<i class="mdi mdi-chevron-double-right"></i></a> 
+                             <a th:href="@{/manager/itemList/{productId} (productId=${mainStock.id}) }">more..<i class="mdi mdi-chevron-double-right"></i></a> 
                                 
                                 
                                 </td>

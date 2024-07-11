@@ -63,9 +63,6 @@ public class AdminController {
 	private SizeService sizeService;
 
 	@Autowired
-	private ProductDetailsService mainStockService;
-
-	@Autowired
 	private RackNumberService rackNumberService;
 
 	@Autowired
@@ -77,8 +74,7 @@ public class AdminController {
 	@Autowired
 	private CustomersRepository customersRepository;
 
-	@Autowired
-	private ProductTypeRepository productTypeRepository;
+	
 
 	@Autowired
 	private RolesService rolesService;
@@ -134,47 +130,6 @@ public class AdminController {
 		return "redirect:/admin/employeelist";
 	}
 
-	// Add Item Page
-	@GetMapping("/addItem")
-	public String getAddItemPage(Model model) {
-
-		// System.out.println(categoryId);
-		model.addAttribute("productType", productTypeService.getAllProductType());
-
-		model.addAttribute("Sizes", sizeService.getAllSize());
-
-		return "pages/manager/AddItem";
-	}
-
-	// getting ProductSpecifications of a product and creating options in select in
-	// addItem page
-	@GetMapping("/getproductSpecification/{productId}")
-	@ResponseBody
-	public List<ProductSpecifications> listProductSpecifications(@PathVariable Long productId) {
-
-		ProductType productType = productTypeRepository.findById(productId).get();
-		List<ProductSpecifications> productSpecifications = productType.getProductSpecifications();
-		return productSpecifications;
-	}
-
-	// getting Size of a product and creating options in select in addItem page
-	@GetMapping("/getsize/{productId}")
-	@ResponseBody
-	public List<Size> listProductSize(@PathVariable Long productId) {
-
-		ProductType productType = productTypeRepository.findById(productId).get();
-		List<Size> size = productType.getSize();
-		return size;
-	}
-
-	// Saving Item in database
-	@PostMapping("/addItem")
-	public String saveItem(@ModelAttribute ProductDetails mainStock) {
-
-		mainStockService.saveItem(mainStock);
-
-		return "redirect:/admin/addItem";
-	}
 
 	// ADD/List of Product/Size
 	@GetMapping("/addProductAndSize")
