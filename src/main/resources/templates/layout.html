@@ -127,13 +127,15 @@
 					</a></li>
 
 
+<!-- Admin -->
+
 					<!--   Product    -->
 
 					<li class="nav-item"><a class="nav-link"
 						data-toggle="collapse" href="#ui-basic" aria-expanded="false"
 						aria-controls="ui-basic"> <i
 							class="menu-icon mdi mdi-content-copy"></i> <span
-							class="menu-title">Product</span> <i class="menu-arrow"></i>
+							class="menu-title">Manage Product</span> <i class="menu-arrow"></i>
 					</a>
 
 						<div class="collapse" id="ui-basic">
@@ -143,12 +145,63 @@
 								 <li class="nav-item"><a class="nav-link" href="#" th:href="@{/admin/addProductAndSize}">Add Product/Size</a>
 								</li>
 								<li class="nav-item"><a class="nav-link" href="#" th:href="@{/admin/addSpecificationsAndRackNumber}">Add Rack/Specifi..</a>
+								</li>	
+							</ul>
+
+						</div></li>
+						
+
+						
+				<!-- Add Employee  -->
+				<div sec:authorize="hasRole('ROLE_ADMIN')">
+					<li class="nav-item"><a class="nav-link"
+						data-toggle="collapse" href="#ui-basic2" aria-expanded="false"
+						aria-controls="ui-basic"> 
+						<i class="menu-icon mdi mdi-account-edit"></i> <span
+							class="menu-title">Employee</span> <i class="menu-arrow"></i>
+					</a>
+
+						<div class="collapse" id="ui-basic2">
+							<ul class="nav flex-column sub-menu">
+
+								<li class="nav-item"> <a class="nav-link" th:href="@{/admin/addEmployee}"> 
+									<i class="menu-icon mdi mdi-account-multiple"></i> <span class="menu-title">Add Staff</span>
+									</a>
+								</li>
+								
+								<li class="nav-item"> <a class="nav-link" href="#" th:href="@{/admin/employeelist}"> 
+									<i class="menu-icon mdi mdi-clipboard-text"></i> <span class="menu-title">Staff List</span>
+									</a>
 								</li>
 
+
+							</ul>
+						</div>
+						</li>
+						</div>
+					
+
+<!-- Admin END -->
+
+
+<!-- Manager -->
+					<!--   Product    -->
+
+					<li class="nav-item"><a class="nav-link"
+						data-toggle="collapse" href="#ui-basic3" aria-expanded="false"
+						aria-controls="ui-basic"> <i
+							class="menu-icon mdi mdi-content-copy"></i> <span
+							class="menu-title">Product</span> <i class="menu-arrow"></i>
+					</a>
+
+						<div class="collapse" id="ui-basic3">
+
+							<ul class="nav flex-column sub-menu"> 
+
 								<li class="nav-item"><a class="nav-link" href="#"
-									th:href="@{/admin/addItem}">Add Item</a></li>
+									th:href="@{/manager/addItem}">Add Item</a></li>
 								<li class="nav-item"><a class="nav-link" href="#"
-									th:href="@{/manager/mainStock}">View/Edit Main Stock</a></li>
+									th:href="@{/manager/itemList}">View/Edit Item List</a></li>
 								<li class="nav-item"><a class="nav-link" href="#"
 									th:href="@{/salesStock}">View/Edit sales Stock</a></li>
 								<!-- <li class="nav-item"><a class="nav-link" href="#"
@@ -157,11 +210,15 @@
 
 						</div></li>
 
+<!-- Manager END -->
 
 
 
 
-
+						
+						
+<!-- Sales -->											
+						
 					<!-- Add Customer  -->
 
 					<li class="nav-item"><a class="nav-link"
@@ -182,21 +239,18 @@
 
 							</ul>
 						</div>
-						</li>
+						</li>	
 						
-						
-						
-						
-						<!-- order  -->
+					<!-- order  -->
 
 					<li class="nav-item"><a class="nav-link"
-						data-toggle="collapse" href="#ui-basic2" aria-expanded="false"
+						data-toggle="collapse" href="#ui-basic4" aria-expanded="false"
 						aria-controls="ui-basic"> 
 						<i class="menu-icon mdi mdi-baby-buggy"></i> <span
 							class="menu-title">Order</span> <i class="menu-arrow"></i>
 					</a>
 
-						<div class="collapse" id="ui-basic2">
+						<div class="collapse" id="ui-basic4">
 							<ul class="nav flex-column sub-menu">
 
 								<li class="nav-item"><a class="nav-link" href="#" th:href="@{/sales/preorder}">Pre-Order</a></li>
@@ -207,35 +261,8 @@
 						</div>
 						</li>
 
+<!-- Sales END	 -->			
 				
-					<!-- Add Employee  -->
-				<div sec:authorize="hasRole('ROLE_ADMIN')">
-					<li class="nav-item"><a class="nav-link"
-						data-toggle="collapse" href="#ui-basic3" aria-expanded="false"
-						aria-controls="ui-basic"> 
-						<i class="menu-icon mdi mdi-account-edit"></i> <span
-							class="menu-title">Employee</span> <i class="menu-arrow"></i>
-					</a>
-
-						<div class="collapse" id="ui-basic3">
-							<ul class="nav flex-column sub-menu">
-
-								<li class="nav-item"> <a class="nav-link" th:href="@{/admin/addEmployee}"> 
-									<i class="menu-icon mdi mdi-account-multiple"></i> <span class="menu-title">Add Staff</span>
-									</a>
-								</li>
-								
-								<li class="nav-item"> <a class="nav-link" href="#" th:href="@{/admin/employeelist}"> 
-									<i class="menu-icon mdi mdi-clipboard-text"></i> <span class="menu-title">Staff List</span>
-									</a>
-								</li>
-
-
-							</ul>
-						</div>
-						</li>
-						</div>
-
 
 
 					

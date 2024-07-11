@@ -10,7 +10,7 @@ function getProducts(productSpecification, numericSize) {
    }
 
    // Fetching product specifications
-   $.get("/admin/getproductSpecification/" + productId, function(data) {
+   $.get("/manager/getproductSpecification/" + productId, function(data) {
        var specDropdown = document.getElementById(productSpecification);
        
        specDropdown.length = 0;  // Clear existing options
@@ -25,7 +25,7 @@ function getProducts(productSpecification, numericSize) {
    });
 
    // Fetching sizes
-   $.get("/admin/getsize/" + productId, function(data) {
+   $.get("/manager/getsize/" + productId, function(data) {
       
        var sizeDropdown = document.getElementById(numericSize);
       
